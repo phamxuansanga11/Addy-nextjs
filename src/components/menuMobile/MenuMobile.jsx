@@ -17,7 +17,7 @@ function MenuMobile({ iconRef, handleCloseMenu }) {
 
   return (
     <section className="menu__mobie" ref={iconRef}>
-      <div className="bg__black"></div>
+      <div className="bg__black" onClick={handleCloseMenuChild}></div>
       <div className="menu__mobile-nav">
         <div className="menu__mobile-nav-logo">
           <a href="" className="logo">

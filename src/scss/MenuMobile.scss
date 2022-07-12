@@ -19,7 +19,8 @@
     }
   }
   .bg__black {
-    pointer-events: none;
+    z-index: -1;
+    // pointer-events: none;
     transition: 0.4s;
     opacity: 0;
     // display: none;
@@ -31,6 +32,8 @@
     background: rgba(0, 0, 0, 0.7);
   }
   .menu__mobile-nav {
+    user-select: none;
+    z-index: 101;
     opacity: 0;
     transform: translateX(100%);
     transition: 0.4s;
@@ -103,7 +106,8 @@
     }
     .menu__mobile-nav-btn {
       .languages {
-        display: flex;
+        display: none;
+        // display: flex;
         margin-right: 20px;
         .languages__flag-icon {
           margin-right: 4px;

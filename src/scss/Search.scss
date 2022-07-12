@@ -74,6 +74,12 @@
   }
 }
 
+@media screen and(max-width:768px) {
+  .section__search {
+    margin-top: 60px;
+  }
+}
+
 @media screen and(max-width:576px) {
   .section__search .container .search__content {
     width: 360px;

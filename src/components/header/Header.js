@@ -11,7 +11,7 @@ Header.propTypes = {};
   /* <img src="../../../img/logo.png" alt="len" /> */
 }
 
-function Header({ executeScroll, contact }) {
+function Header({ executeScroll, contact, number }) {
   const myRef = useRef(null);
   const iconRef = useRef(null);
 
@@ -23,13 +23,18 @@ function Header({ executeScroll, contact }) {
   const handleCloseMenu = () => {
     console.log("run func close menu...");
     iconRef.current.classList.remove("active");
+    if (number) {
+      iconRef.current.classList.remove("active");
+    } else {
+      return;
+    }
   };
 
   const router = useRouter();
   const location = router.pathname;
 
-  const handleClick = () => {
-    console.log("re-render");
+  const handleClick = async () => {
+    console.log("re-render...");
     router.push("/contact");
   };
 
@@ -39,63 +44,77 @@ function Header({ executeScroll, contact }) {
         <div className="container --container__header">
           <div className="header__nav">
             <div className="header__nav-logo">
-              <a href="">
-                <img src="../../../img/logo.png" alt="logo" />
-              </a>
+              <Link href="/">
+                <a>
+                  <img src="../../../img/logo.png" alt="logo" />
+                </a>
+              </Link>
             </div>
             <ul className="header__nav-menu">
-              <li
-                className={classNames({
-                  "nav__menu-option": true,
-                  active: location === "/",
-                })}
-              >
+              <li className="nav__menu-option">
                 <Link href="/">
-                  <a className="active">Trang chủ</a>
+                  <a
+                    className={classNames({
+                      "": true,
+                      active: location === "/",
+                    })}
+                  >
+                    Trang chủ
+                  </a>
                 </Link>
               </li>
-              <li
-                className={classNames({
-                  "nav__menu-option": true,
-                  active: location === "/features",
-                })}
-              >
+              <li className="nav__menu-option">
                 <Link href="/features">
-                  <a>Tính năng</a>
+                  <a
+                    className={classNames({
+                      "": true,
+                      active: location === "/features",
+                    })}
+                  >
+                    Tính năng
+                  </a>
                 </Link>
               </li>
-              <li
-                className={classNames({
-                  "nav__menu-option": true,
-                  active: location === "/posts" || location === "/postsDetail",
-                })}
-              >
+              <li className="nav__menu-option">
                 <Link href="/posts">
-                  <a>Bài viết</a>
+                  <a
+                    className={classNames({
+                      "": true,
+                      active:
+                        location === "/posts" || location === "/postsDetail",
+                    })}
+                  >
+                    Bài viết
+                  </a>
                 </Link>
               </li>
-              <li
-                className={classNames({
-                  "nav__menu-option": true,
-                  active:
-                    location === "/document" ||
-                    location === "/searchDetail" ||
-                    location === "/searchDetailPost",
-                })}
-              >
+              <li className="nav__menu-option">
                 <Link href="/document">
-                  <a>Tài liệu</a>
+                  <a
+                    className={classNames({
+                      "": true,
+                      active:
+                        location === "/document" ||
+                        location === "/searchDetail" ||
+                        location === "/searchDetailPost",
+                    })}
+                  >
+                    Tài liệu
+                  </a>
                 </Link>
               </li>
-              <li
-                className={classNames({
-                  "nav__menu-option": true,
-                  active: location === "/contact",
-                })}
-              >
-                <a href="#" onClick={handleClick}>
-                  Liên hệ
-                </a>
+              <li className="nav__menu-option">
+                <Link href="/contact">
+                  <a
+                    className={classNames({
+                      "": true,
+                      active: location === "/contact",
+                    })}
+                    onClick={handleClick}
+                  >
+                    Liên hệ
+                  </a>
+                </Link>
               </li>
             </ul>
             <div className="header__nav-button">

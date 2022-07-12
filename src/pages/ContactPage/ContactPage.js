@@ -10,29 +10,32 @@ import ContactForm from "../../components/contactForm/ContactForm";
 import Faq from "../../components/faq/Faq";
 import Contact from "../../components/contact/Contact";
 import Footer from "../../components/footer/Footer";
+import { useRouter } from "next/router";
 
 // import { createContext } from "react";
-
-// export const content = createContext();
 
 HomePage.propTypes = {};
 
 function HomePage(props) {
+  const router = useRouter();
+  const location = router.pathname;
+
   const myRef = useRef(null);
   useEffect(() => {
-    console.log(myRef?.current);
+    // console.log(myRef?.current);
+    console.log(myRef?.current?.offsetTop);
     window.scrollTo({
       behavior: "smooth",
-      top: myRef?.current?.offsetTop - 100,
+      top: myRef?.current?.offsetTop - 80,
     });
-  }, []);
+  });
 
   return (
     <>
       <Header />
       <AddyCrm
         title={"ADDY CRM"}
-        h3={"Nâng tầm hiệu quả doanh nghiệp"}
+        h3={`Nâng tầm hiệu quả doanh nghiệp`}
         p={`Nền tảng giúp lưu trữ và quản lí thông tin khách hàng, 
         Xây dựng một quy trình bán hàng chuyên nghiệp giúp doanh nghiệp 
         chăm sóc khách hàng tốt hơn, tối ưu hiệu quả và tăng doanh thu.`}

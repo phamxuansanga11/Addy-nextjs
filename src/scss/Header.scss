@@ -16,7 +16,9 @@
       height: 100%;
       .header__nav-logo {
         a {
+          display: flex;
           img {
+            margin: auto;
             width: 140px;
           }
         }
@@ -25,14 +27,17 @@
         display: flex;
         margin-bottom: 0;
         .nav__menu-option {
-          position: relative;
-          padding: 10px;
-          &.active {
+          > a {
+            position: relative;
+            padding: 10px;
             font-weight: 600;
-            color: #10213d !important;
+            font-size: 16px;
+            position: relative;
+            color: #000 !important;
+            transition: 0.2s;
             &::after {
               content: "";
-              width: 50%;
+              width: 0;
               height: 4px;
               display: flex;
               align-items: center;
@@ -42,11 +47,30 @@
               left: 50%;
               transform: translateX(-50%);
               bottom: 0;
+              // animation: example 0.5s ease-in;
             }
-          }
-          > a {
-            font-size: 16px;
-            position: relative;
+            &:hover {
+              color: #ff9900 !important;
+              transition: 0.2s;
+            }
+            &.active {
+              font-weight: 600;
+              color: #170a4b !important;
+              &::after {
+                content: "";
+                width: 50%;
+                height: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #f90;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 0;
+                animation: example 0.2s ease-in;
+              }
+            }
           }
         }
       }
@@ -54,7 +78,8 @@
         display: flex;
         align-items: center;
         .languages {
-          display: flex;
+          display: none;
+          // display: flex;
           margin-right: 20px;
           .languages__flag-icon {
             margin-right: 4px;
@@ -86,12 +111,22 @@
         }
       }
       .header__nav-icon__mobile {
+        cursor: pointer;
         display: none;
         i {
           font-size: 2rem;
         }
       }
     }
+  }
+}
+
+@keyframes example {
+  from {
+    width: 0;
+  }
+  to {
+    width: 50%;
   }
 }
 
@@ -106,5 +141,11 @@
     .header__nav-icon__mobile {
       display: block;
     }
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .header {
+    height: 60px;
   }
 }

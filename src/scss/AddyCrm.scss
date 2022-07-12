@@ -54,4 +54,16 @@
   .section__homepage .bg__homepage .--container__homepage .wrapper__grid {
     grid-template-columns: 1fr;
   }
+  .section__homepage .bg__homepage {
+    background-position: 100% -40px;
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .section__homepage .bg__homepage {
+    background-position: 100% 0;
+  }
+  .section__homepage {
+    margin-top: 60px;
+  }
 }

@@ -1,15 +1,41 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
+import Link from "next/link";
+import classNames from "classnames";
+import MenuMobile from "../menuMobile/MenuMobile";
+
 Header.propTypes = {};
 
 {
   /* <img src="../../../img/logo.png" alt="len" /> */
 }
 
-function Header(props) {
+function Header({ executeScroll, contact }) {
+  const myRef = useRef(null);
+  const iconRef = useRef(null);
+
+  const handleClickMenu = () => {
+    console.log("click menu", iconRef.current);
+    iconRef.current.classList.add("active");
+  };
+
+  const handleCloseMenu = () => {
+    console.log("run func close menu...");
+    iconRef.current.classList.remove("active");
+  };
+
+  const router = useRouter();
+  const location = router.pathname;
+
+  const handleClick = () => {
+    console.log("re-render");
+    router.push("/contact");
+  };
+
   return (
     <>
-      <header className="header">
+      <header ref={myRef} className="header">
         <div className="container --container__header">
           <div className="header__nav">
             <div className="header__nav-logo">
@@ -18,22 +44,58 @@ function Header(props) {
               </a>
             </div>
             <ul className="header__nav-menu">
-              <li className="nav__menu-option">
-                <a href="/" className="active">
-                  Trang chủ
+              <li
+                className={classNames({
+                  "nav__menu-option": true,
+                  active: location === "/",
+                })}
+              >
+                <Link href="/">
+                  <a className="active">Trang chủ</a>
+                </Link>
+              </li>
+              <li
+                className={classNames({
+                  "nav__menu-option": true,
+                  active: location === "/features",
+                })}
+              >
+                <Link href="/features">
+                  <a>Tính năng</a>
+                </Link>
+              </li>
+              <li
+                className={classNames({
+                  "nav__menu-option": true,
+                  active: location === "/posts" || location === "/postsDetail",
+                })}
+              >
+                <Link href="/posts">
+                  <a>Bài viết</a>
+                </Link>
+              </li>
+              <li
+                className={classNames({
+                  "nav__menu-option": true,
+                  active:
+                    location === "/document" ||
+                    location === "/searchDetail" ||
+                    location === "/searchDetailPost",
+                })}
+              >
+                <Link href="/document">
+                  <a>Tài liệu</a>
+                </Link>
+              </li>
+              <li
+                className={classNames({
+                  "nav__menu-option": true,
+                  active: location === "/contact",
+                })}
+              >
+                <a href="#" onClick={handleClick}>
+                  Liên hệ
                 </a>
-              </li>
-              <li className="nav__menu-option">
-                <a href="/features">Tính năng</a>
-              </li>
-              <li className="nav__menu-option">
-                <a href="/posts">Bài viết</a>
-              </li>
-              <li className="nav__menu-option">
-                <a href="/document">Tài liệu</a>
-              </li>
-              <li className="nav__menu-option">
-                <a href="">Liên hệ</a>
               </li>
             </ul>
             <div className="header__nav-button">
@@ -47,9 +109,10 @@ function Header(props) {
                 <a href="">Sử dụng miễn phí</a>
               </div>
             </div>
-            <div className="header__nav-icon__mobile">
+            <div className="header__nav-icon__mobile" onClick={handleClickMenu}>
               <i className="fa fa-bars"></i>
             </div>
+            <MenuMobile iconRef={iconRef} handleCloseMenu={handleCloseMenu} />
           </div>
         </div>
       </header>

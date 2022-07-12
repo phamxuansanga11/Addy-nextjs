@@ -1,14 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Link from "next/link";
 
 GridItem.propTypes = {};
 
 function GridItem(props) {
   return (
     <div className="item__posts">
-      <a href="/postsDetail">
-        <img src="../../../img/new-5.jpg" alt="" />
-      </a>
+      <Link href="/postsDetail">
+        <a>
+          <img src="../../../img/new-5.jpg" alt="" />
+        </a>
+      </Link>
       <div className="item__text">
         <h4>Webinar "Triển khai CRM - Để không bao giờ thất bại!</h4>
         <p>

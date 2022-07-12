@@ -21,8 +21,13 @@ footer {
           margin-bottom: 15px;
           color: #fff !important;
           line-height: 20px;
+          transition: 0.2s;
           &:hover {
             color: #ff9900 !important;
+            transition: 0.2s;
+            span {
+              color: #fff;
+            }
           }
           span {
             color: #ff9900;

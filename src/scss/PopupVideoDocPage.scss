@@ -1,40 +1,6 @@
-// .section__popup {
-//   display: none;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100vw;
-//   height: 100vh;
-//   background: rgba(0, 0, 0, 0.7);
-//   &.active {
-//     display: block !important;
-//   }
-//   .popup {
-//     //     width: 500px;
-//     //     height: 400px;
-//     width: 80%;
-//     height: 70%;
-//     background-color: #fff;
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     .btn__close {
-//       cursor: pointer;
-//       position: absolute;
-//       right: 10px;
-//       top: 10px;
-//     }
-//     .iframe {
-//       width: 100%;
-//       height: 100%;
-//     }
-//   }
-// }
-
 .ReactModal__Content {
-  width: 830px !important;
-  height: 500px !important;
+  width: 80%;
+  height: 550px !important;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -42,12 +8,8 @@
   border: none !important;
   background: none;
   margin-right: 0 !important;
-  padding: 0 !important;
   overflow: initial !important;
-}
-.section__popup {
-  width: 100%;
-  height: 100%;
+  padding: 3px !important;
   .popup {
     position: relative;
     width: 100%;
@@ -58,8 +20,8 @@
       height: 30px;
       border-radius: 50%;
       position: absolute;
-      right: -7px;
-      top: -7px;
+      right: -14px;
+      top: -14px;
       background-color: #fff;
       display: flex;
       > p {
@@ -73,6 +35,26 @@
     }
   }
 }
+.section__popup {
+  width: 100%;
+  height: 100%;
+}
 .ReactModal__Overlay {
   background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.html5-video-container .video-stream {
+  width: 100% !important;
+}
+
+@media screen and(max-width: 993px) {
+  .ReactModal__Content {
+    height: 438px !important;
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .ReactModal__Content {
+    height: 356px !important;
+  }
 }

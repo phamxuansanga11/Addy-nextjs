@@ -50,8 +50,8 @@ function HightlightsCare(props) {
                   <li className="pagination__list-option --prev__btn">
                     <span>←</span>
                   </li>
-                  <li className="pagination__list-option active">1</li>
-                  <li className="pagination__list-option">2</li>
+                  <li className="pagination__list-option">1</li>
+                  <li className="pagination__list-option active">2</li>
                   <li className="pagination__list-option">3</li>
                   <li className="pagination__list-option --next__btn">
                     <span>→</span>

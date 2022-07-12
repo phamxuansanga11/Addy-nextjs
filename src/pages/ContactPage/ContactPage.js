@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import Header from "../../components/header/Header";
 import AddyCrm from "../../components/addyCrm/AddyCrm";
@@ -18,32 +18,18 @@ import Footer from "../../components/footer/Footer";
 HomePage.propTypes = {};
 
 function HomePage(props) {
-  // const executeScroll = () =>
-  //   window.scrollTo({
-  //     behavior: "smooth",
-  //     top: myRef?.current?.offsetTop - 100,
-  //   });
   const myRef = useRef(null);
-
-  const executeScroll = () => {
-    console.log("goi ham` cha");
-    return scrollToRef(myRef);
-  };
-
-  const scrollToRef = (ref) => {
-    console.log(ref?.current.offsetTop);
-    return window.scrollTo({
+  useEffect(() => {
+    console.log(myRef?.current);
+    window.scrollTo({
       behavior: "smooth",
-      top: ref.current.offsetTop - 100,
+      top: myRef?.current?.offsetTop - 100,
     });
-  };
+  }, []);
 
   return (
     <>
-      <Header
-        executeScroll={executeScroll}
-        contact={myRef?.current?.offsetTop - 100}
-      />
+      <Header />
       <AddyCrm
         title={"ADDY CRM"}
         h3={"Nâng tầm hiệu quả doanh nghiệp"}

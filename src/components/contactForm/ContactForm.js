@@ -7,9 +7,9 @@ ContactForm.propTypes = {};
   /* <img src="../../../img/logo.png" alt="len" /> */
 }
 
-function ContactForm(props) {
+function ContactForm({ myRef }) {
   return (
-    <section className="section__contact-form">
+    <section ref={myRef} className="section__contact-form">
       <div className="contact__bg">
         <div className="contact__bg-top">
           <img src="../../../img/bg-top.png" alt="" />

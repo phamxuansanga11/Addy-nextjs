@@ -68,3 +68,20 @@
     }
   }
 }
+@media screen and(max-width: 768px) {
+  .section__characteristics .container .characteristics .characteristics__flex {
+    flex-direction: column;
+    justify-content: initial;
+    .characteristics__flex-glb {
+      .characteristics__item {
+        max-width: 100% !important;
+      }
+    }
+    .characteristics__flex-mid {
+      width: 100%;
+    }
+    .characteristics__flex-right {
+      margin-top: 30px;
+    }
+  }
+}

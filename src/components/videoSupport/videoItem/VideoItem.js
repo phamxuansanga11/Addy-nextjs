@@ -17,7 +17,6 @@ const customStyles = {
 };
 
 function VideoItem({ data }) {
-  console.log(data.srcVideo);
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -58,13 +57,14 @@ function VideoItem({ data }) {
         </div>
       </div>
       <div className="Modal">
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
-          <section className="section__popup">
+        <section className="section__popup">
+          <Modal
+            ariaHideApp={false}
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStyles}
+            contentLabel="Example Modal"
+          >
             <div className="popup">
               <div className="btn__close" onClick={closeModal}>
                 <p>X</p>
@@ -75,8 +75,8 @@ function VideoItem({ data }) {
                 frameBorder="0"
               ></iframe>
             </div>
-          </section>
-        </Modal>
+          </Modal>
+        </section>
       </div>
     </>
   );

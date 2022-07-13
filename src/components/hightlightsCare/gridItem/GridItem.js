@@ -13,7 +13,7 @@ function GridItem(props) {
         </a>
       </Link>
       <div className="item__text">
-        <h4>Webinar "Triển khai CRM - Để không bao giờ thất bại!</h4>
+        <h4>Webinar Triển khai CRM - Để không bao giờ thất bại!</h4>
         <p>
           Là một thương hiệu lâu đời đến từ Mỹ, Bulova có rất nhiều bộ sưu tập
           mang những phong cách khác nhau nhằm phục vụ nhu cầu đa dạng của mọi

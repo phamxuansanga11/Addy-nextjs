@@ -22,12 +22,14 @@ function HomePage(props) {
 
   const myRef = useRef(null);
   useEffect(() => {
-    // console.log(myRef?.current);
-    console.log(myRef?.current?.offsetTop);
-    window.scrollTo({
-      behavior: "smooth",
-      top: myRef?.current?.offsetTop - 80,
-    });
+    console.log("hi du", location);
+    // console.log(myRef?.current?.offsetTop);
+    if (location === "/contact") {
+      window.scrollTo({
+        behavior: "smooth",
+        top: myRef?.current?.offsetTop - 80,
+      });
+    }
   });
 
   return (

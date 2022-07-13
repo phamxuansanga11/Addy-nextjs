@@ -85,3 +85,9 @@
     }
   }
 }
+
+@media screen and(max-width: 460px) {
+  .section__characteristics .container .characteristics h2 {
+    font-size: 28px;
+  }
+}

@@ -194,3 +194,17 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media screen and(max-width: 447px) {
+  .section__newpost .container .new__post .new__post-title h2 {
+    font-size: 28px;
+  }
+  .section__hightlights-care
+    .container
+    .hightlights__care
+    .wrapper__grid
+    .wrapper__grid-left
+    h2 {
+    font-size: 28px;
+  }
+}

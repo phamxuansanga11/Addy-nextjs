@@ -76,3 +76,9 @@
     margin-top: 20px;
   }
 }
+
+@media screen and(max-width: 447px) {
+  .section__contact .container .contact .contact__title h2 {
+    font-size: 28px;
+  }
+}

@@ -167,3 +167,9 @@
     padding-right: 35px;
   }
 }
+
+@media screen and(max-width: 447px) {
+  .section__slider .container h2 {
+    font-size: 28px;
+  }
+}

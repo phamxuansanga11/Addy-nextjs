@@ -21,7 +21,7 @@ function Introduce(props) {
               cho các doanh nghiệp nhỏ và vừa.
             </p>
             <p>
-              ADDY phát triển sản phẩm với phương châm “CRM nâng tầm hiệu quả
+              ADDY phát triển sản phẩm với phương châm "CRM nâng tầm hiệu quả
               doanh nghiệp" và luôn nắm bắt các xu hướng về công nghệ để thiết
               kế giải pháp phù hợp với môi trường Việt Nam. Từ đó, giúp doanh
               nghiệp dễ dàng chuẩn hóa quy trình làm việc và phù hợp với đặc thù

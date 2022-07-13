@@ -123,6 +123,15 @@
             .btn__submit {
               display: flex;
               justify-content: center;
+              &:hover {
+                a {
+                  &:hover {
+                    background-color: #170a4b;
+                    transition: 0.2s;
+                    color: #fff !important;
+                  }
+                }
+              }
               a {
                 font-family: br;
                 font-size: 16px;
@@ -131,6 +140,7 @@
                 text-decoration: none;
                 padding: 12px 24px;
                 background-color: #ff9900;
+                transition: 0.2s;
                 border-radius: 12px;
                 z-index: 99;
                 display: inline-flex;

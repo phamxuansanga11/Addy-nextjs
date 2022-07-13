@@ -41,6 +41,9 @@
         }
         .contact__btn-hotline {
           background-color: #fe4e4e;
+          &:hover {
+            background-color: #d12828;
+          }
           i {
             img {
             }
@@ -49,6 +52,9 @@
           }
         }
         .contact__btn-email {
+          &:hover {
+            background-color: #173972;
+          }
           margin-left: 30px;
           background-color: #10213d;
         }

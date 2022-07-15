@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 Search.propTypes = {};
@@ -8,6 +8,12 @@ Search.propTypes = {};
 }
 
 function Search(props) {
+  const [valueSearch, setValueSearch] = useState("");
+
+  useEffect(() => {
+    console.log(valueSearch);
+  }, [valueSearch]);
+
   return (
     <section className="section__search">
       <div className="container">
@@ -19,7 +25,12 @@ function Search(props) {
                 <img src="../../../img/ic-search.svg" alt="icon search" />
               </i>
             </div>
-            <input type="text" placeholder="Hướng dẫn sử dụng phần mềm..." />
+            <input
+              type="text"
+              placeholder="Hướng dẫn sử dụng phần mềm..."
+              value={valueSearch}
+              onChange={(e) => setValueSearch(e.target.value)}
+            />
           </div>
           <p className="search__contact">
             Liên hệ ngay với ADDY để được hỗ trợ miễn phí{" "}

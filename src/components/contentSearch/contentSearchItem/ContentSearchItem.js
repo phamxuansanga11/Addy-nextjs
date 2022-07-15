@@ -10,12 +10,11 @@ function ContentSearchItem({ data }) {
       <Link href="/searchDetailPost">
         <a>
           <img src={`${data.image}`} alt="" />
+          <p className="bg__orange">{data.name}</p>
         </a>
       </Link>
       <div className="decription">
-        <div className="decription__title">
-          <h4>{data.name}</h4>
-        </div>
+        <div className="decription__title"></div>
         <div className="decription__time-view">
           <div className="time --flex-icon">
             <i>

@@ -9,12 +9,12 @@ SearchDetail.propTypes = {};
 
 function SearchDetail(props) {
   return (
-    <>
+    <section className="main__search-detail-page">
       <Header />
       <Search />
       <ContentSearch />
       <Footer />
-    </>
+    </section>
   );
 }
 

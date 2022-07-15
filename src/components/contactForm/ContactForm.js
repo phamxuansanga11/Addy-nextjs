@@ -1,18 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
 
 ContactForm.propTypes = {};
 
 {
   /* <img src="../../../img/logo.png" alt="len" /> */
-}
-{
-  /* <div className="placeholder">
-Số điện thoại
-<span>*</span>
-</div> */
 }
 
 function ContactForm({ myRef }) {
@@ -36,10 +29,9 @@ function ContactForm({ myRef }) {
     ONLY_NUMBER: /^[0-9]*$/,
     LINK: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
   };
-
   return (
-    <section ref={myRef} className="section__contact-form">
-      <div className="contact__bg">
+    <section className="section__contact-form">
+      <div className="contact__bg" ref={myRef}>
         <div className="contact__bg-top">
           <img src="../../../img/bg-top.png" alt="" />
         </div>
@@ -146,11 +138,7 @@ function ContactForm({ myRef }) {
                     </small>
                   )}
                 </div>
-
                 <input className="btn__submit" type="submit" value="Đăng kí" />
-                {/* <button type="submit" className="btn__submit">
-                  <a href="">Đăng ký</a>
-                </button> */}
               </form>
             </div>
           </div>

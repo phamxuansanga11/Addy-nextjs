@@ -7,7 +7,7 @@ ContentSearchItem.propTypes = {};
 function ContentSearchItem({ data }) {
   return (
     <div className="result__content-grid__item">
-      <Link href="/searchDetailPost">
+      <Link href="/bai-viet-tim-kiem-chi-tiet">
         <a>
           <img src={`${data.image}`} alt="" />
           <p className="bg__orange">{data.name}</p>

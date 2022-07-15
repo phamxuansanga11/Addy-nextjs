@@ -49,6 +49,8 @@
               border-top-right-radius: 6px;
               border-bottom-right-radius: 6px;
               padding: 4px 8px;
+              pointer-events: none;
+              user-select: none;
             }
           }
 

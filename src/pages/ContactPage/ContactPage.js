@@ -22,9 +22,7 @@ function HomePage(props) {
 
   const myRef = useRef(null);
   useEffect(() => {
-    console.log("hi du", location);
-    // console.log(myRef?.current?.offsetTop);
-    if (location === "/contact") {
+    if (location === "/lien-he") {
       window.scrollTo({
         behavior: "smooth",
         top: myRef?.current?.offsetTop - 80,

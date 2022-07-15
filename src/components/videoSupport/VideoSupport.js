@@ -16,7 +16,7 @@ function VideoSupport(props) {
     date: "28/09/2021",
     view: "210 Lượt xem",
     image: "../../../img/video-1.jpg",
-    srcVideo: "https://www.youtube.com/embed/TjBwzgFtXYY?autoplay=1",
+    srcVideo: "https://www.youtube.com/embed/PVjiKRfKpPI?autoplay=1",
     arrData: [
       {
         id: 2,

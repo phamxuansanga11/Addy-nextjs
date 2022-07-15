@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import GridItem from "./gridItem/GridItem";
-import PostCareItem from "./postCareItem/PostCareItem";
+import SideBarRight from "./sideBarRight/SideBarRight";
 
 HightlightsCare.propTypes = {};
 
@@ -10,28 +10,6 @@ HightlightsCare.propTypes = {};
 }
 
 function HightlightsCare(props) {
-  const Data = [
-    {
-      image: "../../../img/new-6.jpg",
-      text: "Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10",
-    },
-    {
-      image: "../../../img/new-7.jpg",
-      text: "Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10 Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10",
-    },
-    {
-      image: "../../../img/new-8.jpg",
-      text: "Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10 Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10",
-    },
-    {
-      image: "../../../img/new-9.jpg",
-      text: "Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10 Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10",
-    },
-    {
-      image: "../../../img/new-10.jpg",
-      text: "Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10",
-    },
-  ];
   return (
     <section className="section__hightlights-care">
       <div className="container">
@@ -60,23 +38,7 @@ function HightlightsCare(props) {
               </div>
             </div>
             <div className="wrapper__grid-right">
-              <h2 className="title">Bạn có thể quan tâm</h2>
-              <PostCareItem data={Data} />
-              <h2 className="title">Danh mục</h2>
-              <div className="category">
-                <a href="" className="category__detail">
-                  Kiến thức crm
-                </a>
-                <a href="" className="category__detail">
-                  Lợi ích crm
-                </a>
-                <a href="" className="category__detail">
-                  Các ứng dụng của crm
-                </a>
-                <a href="" className="category__detail">
-                  Các tính năng của crm
-                </a>
-              </div>
+              <SideBarRight />
             </div>
           </div>
         </div>

@@ -20,6 +20,7 @@
         display: flex;
         align-items: center;
         .contact__text {
+          z-index: 2;
           padding: 0 15px;
           flex-basis: 50%;
           h4 {
@@ -74,7 +75,7 @@
                 resize: none;
                 font-weight: normal;
                 &::placeholder {
-                  color: #282828;
+                  color: rgb(117, 114, 114);
                 }
                 &:focus {
                   outline: none;
@@ -84,9 +85,9 @@
                   // }
                 }
               }
-              input:not(:placeholder-shown) + .placeholder {
-                display: none;
-              }
+              // input:not(:placeholder-shown) + .placeholder {
+              //   display: none;
+              // }
               .textarea {
                 width: 100%;
                 font-size: 16px;
@@ -100,7 +101,7 @@
                 resize: none;
                 font-weight: normal;
                 &::placeholder {
-                  color: #282828;
+                  color: rgb(117, 114, 114);
                 }
                 &:focus {
                   outline: none;
@@ -121,30 +122,39 @@
               }
             }
             .btn__submit {
+              border: none;
+              outline: none;
               display: flex;
+              background: transparent;
               justify-content: center;
+              width: 112px;
+              height: 44px;
+              border-radius: 12px;
+              background-color: #ff9900;
+              font-family: br;
+              font-size: 16px;
+              font-weight: 500;
+              color: #170a4b;
+              margin: auto;
+              transition: 0.2s;
               &:hover {
-                a {
-                  &:hover {
-                    background-color: #170a4b;
-                    transition: 0.2s;
-                    color: #fff !important;
-                  }
-                }
-              }
-              a {
-                font-family: br;
-                font-size: 16px;
-                font-weight: 500;
-                color: #170a4b;
-                text-decoration: none;
-                padding: 12px 24px;
-                background-color: #ff9900;
+                background-color: #170a4b;
                 transition: 0.2s;
-                border-radius: 12px;
-                z-index: 99;
-                display: inline-flex;
+                color: #fff !important;
               }
+              // a {
+              //   font-family: br;
+              //   font-size: 16px;
+              //   font-weight: 500;
+              //   color: #170a4b;
+              //   text-decoration: none;
+              //   padding: 12px 24px;
+              //   background-color: #ff9900;
+              //   transition: 0.2s;
+              //   border-radius: 12px;
+              //   z-index: 99;
+              //   display: inline-flex;
+              // }
             }
           }
         }

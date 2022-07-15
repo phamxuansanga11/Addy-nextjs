@@ -79,6 +79,15 @@
         margin: 2rem 0;
         padding: 0.5rem 0.8rem;
         width: fit-content;
+        > a {
+          transition: 0.2s;
+        }
+        &:hover {
+          > a {
+            transition: 0.2s;
+            color: #ff9900 !important;
+          }
+        }
         &.active {
           font-weight: 600;
           > a {

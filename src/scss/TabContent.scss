@@ -4,11 +4,17 @@
     .backtopageprev {
       margin-bottom: 30px;
       display: flex;
-      a {
+      > a {
         font-size: 16px;
         font-family: br;
         line-height: 28px;
         color: #000;
+        &.active {
+          color: #2384de !important;
+        }
+        &:hover {
+          text-decoration: underline !important;
+        }
       }
       > span {
         margin: 0 8px;
@@ -33,13 +39,26 @@
           padding-left: 30px;
           .option {
             padding: 10px;
+            display: flex;
+            cursor: pointer;
+            &.active {
+              i {
+                margin-right: 5px;
+                display: flex;
+                img {
+                }
+              }
+              span {
+                color: #00377f !important;
+              }
+            }
             i {
+              display: none;
               img {
-                width: 18px;
+                width: 16px;
               }
             }
             > span {
-              margin-left: 5px;
               font-size: 14px;
               font-family: br;
               line-height: 28px;
@@ -60,12 +79,44 @@
           font-weight: 600;
         }
         .params {
-          margin-top: 10px;
+          margin-top: 16px;
           font-size: 14px;
           font-family: br;
           line-height: 28px;
           color: #282828;
         }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 993px) {
+  .section__tabcontent .container .wrapper__grid {
+    grid-template-columns: 1fr;
+  }
+  .section__tabcontent .container .wrapper__grid .wrapper__grid-left .list {
+    display: flex;
+    .option {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: flex-end;
+      i {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .section__tabcontent .container .wrapper__grid .wrapper__grid-left .list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .option {
+      flex-direction: row;
+      i {
+        transform: rotate(0);
       }
     }
   }

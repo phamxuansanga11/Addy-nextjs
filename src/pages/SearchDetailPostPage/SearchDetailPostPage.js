@@ -3,7 +3,7 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import NewBlogItem from "../../components/newBlogItem/NewBlogItem";
+import SiderBarRight from "../../components/hightlightsCare/sideBarRight/SideBarRight";
 
 SearchDetailPost.propTypes = {};
 
@@ -57,11 +57,11 @@ function SearchDetailPost(props) {
                     src="../../../img/detail-blog-1.jpg"
                     alt="image detail"
                   />
+                  <p className="caption__img">
+                    Các phương pháp nâng cao hiệu quả công việc mà bạn cần biết
+                  </p>
                 </div>
                 <div className="text__content">
-                  <h2>
-                    Các phương pháp nâng cao hiệu quả công việc mà bạn cần biết
-                  </h2>
                   <div className="text__content-item">
                     <div className="text__content-item__title">
                       <span>I.</span>
@@ -83,47 +83,8 @@ function SearchDetailPost(props) {
                 </div>
               </div>
             </div>
-            <div className="search__detail-post__grid-right">
-              <div className="blog__interested">
-                <h2>Bài viết liên quan</h2>
-                <div className="blog__interested-content">
-                  <Link href="/postsDetail">
-                    <a className="blog__interested-content-item">
-                      Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày
-                      13/10
-                    </a>
-                  </Link>
-                  <Link href="/postsDetail">
-                    <a className="blog__interested-content-item">
-                      Các thế mạnh của phần mềm quản lý đối với doanh nghiệp
-                    </a>
-                  </Link>
-                  <Link href="/postsDetail">
-                    <a className="blog__interested-content-item">
-                      Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày
-                      13/10
-                    </a>
-                  </Link>
-                  <Link href="/postsDetail">
-                    <a className="blog__interested-content-item">
-                      Các thế mạnh của phần mềm quản lý đối với doanh nghiệp
-                    </a>
-                  </Link>
-                  <Link href="/postsDetail">
-                    <a className="blog__interested-content-item">
-                      Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày
-                      13/10
-                    </a>
-                  </Link>
-                </div>
-                <div className="new__blog">
-                  <h2>Bài viết mới nhất</h2>
-                  <NewBlogItem />
-                  <NewBlogItem />
-                  <NewBlogItem />
-                  <NewBlogItem />
-                </div>
-              </div>
+            <div className="wrapper__grid-right">
+              <SiderBarRight />
             </div>
           </div>
         </div>

@@ -149,7 +149,7 @@ function Slider(props) {
                   </div>
                 </div>
                 <div className="grid__right">
-                  <img src="../../../img/new-5.jpg" alt="" />
+                  <img src="../../../img/benefit-2.jpg" alt="" />
                 </div>
               </div>
             </SwiperSlide>

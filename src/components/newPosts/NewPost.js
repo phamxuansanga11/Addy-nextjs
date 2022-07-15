@@ -18,7 +18,7 @@ function NewPost(props) {
           </div>
           <div className="new__post-grid">
             <div className="grid__left --grid">
-              <Link href="/postsDetail">
+              <Link href="/bai-viet-tim-kiem-chi-tiet">
                 <a className="grid__item">
                   <img src="../../../img/new-1.jpg" alt="" />
                   <div className="grid__item-text">
@@ -41,7 +41,7 @@ function NewPost(props) {
               </Link>
             </div>
             <div className="grid__right --grid">
-              <Link href="/postsDetail">
+              <Link href="/bai-viet-tim-kiem-chi-tiet">
                 <a className="grid__item">
                   <img src="../../../img/new-2.jpg" alt="" />
                   <div className="grid__item-text">
@@ -62,7 +62,7 @@ function NewPost(props) {
                   </div>
                 </a>
               </Link>
-              <Link href="/postsDetail">
+              <Link href="/bai-viet-tim-kiem-chi-tiet">
                 <a className="grid__item">
                   <img src="../../../img/new-3.jpg" alt="" />
                   <div className="grid__item-text">
@@ -83,7 +83,7 @@ function NewPost(props) {
                   </div>
                 </a>
               </Link>
-              <Link href="/postsDetail">
+              <Link href="/bai-viet-tim-kiem-chi-tiet">
                 <a className="grid__item">
                   <img src="../../../img/new-4.jpg" alt="" />
                   <div className="grid__item-text">

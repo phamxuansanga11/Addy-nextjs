@@ -23,11 +23,6 @@ function Header({ executeScroll, contact, number }) {
   const handleCloseMenu = () => {
     console.log("run func close menu...");
     iconRef.current.classList.remove("active");
-    if (number) {
-      iconRef.current.classList.remove("active");
-    } else {
-      return;
-    }
   };
 
   const router = useRouter();
@@ -64,11 +59,11 @@ function Header({ executeScroll, contact, number }) {
                 </Link>
               </li>
               <li className="nav__menu-option">
-                <Link href="/features">
+                <Link href="/tinh-nang">
                   <a
                     className={classNames({
                       "": true,
-                      active: location === "/features",
+                      active: location === "/tinh-nang",
                     })}
                   >
                     Tính năng
@@ -76,12 +71,13 @@ function Header({ executeScroll, contact, number }) {
                 </Link>
               </li>
               <li className="nav__menu-option">
-                <Link href="/posts">
+                <Link href="/bai-viet">
                   <a
                     className={classNames({
                       "": true,
                       active:
-                        location === "/posts" || location === "/postsDetail",
+                        location === "/bai-viet" ||
+                        location === "/bai-viet-tim-kiem-chi-tiet",
                     })}
                   >
                     Bài viết
@@ -89,14 +85,15 @@ function Header({ executeScroll, contact, number }) {
                 </Link>
               </li>
               <li className="nav__menu-option">
-                <Link href="/document">
+                <Link href="/tai-lieu">
                   <a
                     className={classNames({
                       "": true,
                       active:
-                        location === "/document" ||
-                        location === "/searchDetail" ||
-                        location === "/searchDetailPost",
+                        location === "/tai-lieu" ||
+                        location === "/bai-viet-chi-tiet" ||
+                        location === "/chi-tiet-tim-kiem" ||
+                        location === "/tai-lieu-chi-tiet",
                     })}
                   >
                     Tài liệu
@@ -104,13 +101,13 @@ function Header({ executeScroll, contact, number }) {
                 </Link>
               </li>
               <li className="nav__menu-option">
-                <Link href="/contact">
+                <Link href="/lien-he">
                   <a
                     className={classNames({
                       "": true,
-                      active: location === "/contact",
+                      active: location === "/lien-he",
                     })}
-                    onClick={handleClick}
+                    // onClick={handleClick}
                   >
                     Liên hệ
                   </a>

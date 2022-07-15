@@ -22,7 +22,8 @@ function Search(props) {
             <input type="text" placeholder="Hướng dẫn sử dụng phần mềm..." />
           </div>
           <p className="search__contact">
-            Liên hệ ngay với ADDY để được hỗ trợ miễn phí <span>1900 1111</span>
+            Liên hệ ngay với ADDY để được hỗ trợ miễn phí{" "}
+            <a href="#">1900 1111</a>
           </p>
         </div>
       </div>

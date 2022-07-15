@@ -60,8 +60,9 @@
         text-transform: none;
         margin-top: 23px;
         text-align: center;
-        > span {
-          color: #f90;
+        > a {
+          color: #f90 !important;
+          display: inline;
         }
       }
     }

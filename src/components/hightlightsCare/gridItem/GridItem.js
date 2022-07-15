@@ -7,7 +7,7 @@ GridItem.propTypes = {};
 function GridItem(props) {
   return (
     <div className="item__posts">
-      <Link href="/postsDetail">
+      <Link href="/bai-viet-tim-kiem-chi-tiet">
         <a>
           <img src="../../../img/new-5.jpg" alt="" />
         </a>

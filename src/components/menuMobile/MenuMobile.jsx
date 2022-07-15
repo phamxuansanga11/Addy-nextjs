@@ -43,40 +43,41 @@ function MenuMobile({ iconRef, handleCloseMenu }) {
           <li
             className={classNames({
               "nav__menu-option": true,
-              active: location === "/features",
+              active: location === "/tinh-nang",
             })}
           >
-            <Link href="/features">
+            <Link href="/tinh-nang">
               <a>Tính năng</a>
             </Link>
           </li>
           <li
             className={classNames({
               "nav__menu-option": true,
-              active: location === "/posts",
+              active: location === "/bai-viet",
             })}
           >
-            <Link href="/posts">
+            <Link href="/bai-viet">
               <a>Bài viết</a>
             </Link>
           </li>
           <li
             className={classNames({
               "nav__menu-option": true,
-              active: location === "/document",
+              active:
+                location === "/tai-lieu" || location === "/tai-lieu-chi-tiet",
             })}
           >
-            <Link href="/document">
+            <Link href="/tai-lieu">
               <a>Tài liệu</a>
             </Link>
           </li>
           <li
             className={classNames({
               "nav__menu-option": true,
-              active: location === "/contact",
+              active: location === "/lien-he",
             })}
           >
-            <Link href="/contact">
+            <Link href="/lien-he">
               <a>Liên hệ</a>
             </Link>
           </li>

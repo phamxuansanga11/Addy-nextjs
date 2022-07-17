@@ -1,5 +1,6 @@
 .section__contact-form {
   margin-top: 60px;
+  position: relative;
   .contact__bg {
     width: 100%;
     background: linear-gradient(0deg, #9fb0ee, #9fb0ee);
@@ -156,6 +157,12 @@
         }
       }
     }
+  }
+  .MuiPaper-root {
+    display: none;
+    position: fixed !important;
+    right: 10px;
+    bottom: 30px;
   }
 }
 

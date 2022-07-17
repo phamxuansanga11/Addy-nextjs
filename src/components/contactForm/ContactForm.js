@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
+import Alert from "@mui/material/Alert";
 
 ContactForm.propTypes = {};
 
@@ -16,7 +17,9 @@ function ContactForm({ myRef }) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    return console.log(data);
+  };
   const handleStyle = (name) =>
     errors[name] ? { border: "1px solid red" } : null;
 
@@ -30,8 +33,8 @@ function ContactForm({ myRef }) {
     LINK: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
   };
   return (
-    <section className="section__contact-form">
-      <div className="contact__bg" ref={myRef}>
+    <section className="section__contact-form position-relative" ref={myRef}>
+      <div className="contact__bg">
         <div className="contact__bg-top">
           <img src="../../../img/bg-top.png" alt="" />
         </div>
@@ -144,6 +147,9 @@ function ContactForm({ myRef }) {
           </div>
         </div>
       </div>
+      <Alert className="position-absolute " severity="error">
+        This is an error alert — check it out!
+      </Alert>
     </section>
   );
 }

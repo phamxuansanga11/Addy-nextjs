@@ -64,7 +64,9 @@ function MenuMobile({ iconRef, handleCloseMenu }) {
             className={classNames({
               "nav__menu-option": true,
               active:
-                location === "/tai-lieu" || location === "/tai-lieu-chi-tiet",
+                location === "/tai-lieu" ||
+                location === "/tai-lieu-chi-tiet" ||
+                location === "/bai-viet-tim-kiem-chi-tiet",
             })}
           >
             <Link href="/tai-lieu">

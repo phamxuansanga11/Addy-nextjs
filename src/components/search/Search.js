@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
+import * as ga from "../../../libs/ga";
+
 Search.propTypes = {};
 
 {
@@ -8,7 +10,18 @@ Search.propTypes = {};
 }
 
 function Search(props) {
-  const [valueSearch, setValueSearch] = useState("");
+  // const [valueSearch, setValueSearch] = useState("");
+
+  const [query, setQuery] = useState("");
+
+  const search = () => {
+    ga.event({
+      action: "search",
+      params: {
+        search_term: query,
+      },
+    });
+  };
 
   useEffect(() => {
     console.log(valueSearch);
@@ -29,7 +42,9 @@ function Search(props) {
               type="text"
               placeholder="Hướng dẫn sử dụng phần mềm..."
               value={valueSearch}
-              onChange={(e) => setValueSearch(e.target.value)}
+              // onChange={(e) => setValueSearch(e.target.value)}
+              onChange={(event) => setQuery(event.target.value)}
+              onSubmit={() => search()}
             />
           </div>
           <p className="search__contact">

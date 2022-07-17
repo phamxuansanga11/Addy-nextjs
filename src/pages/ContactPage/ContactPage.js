@@ -21,7 +21,9 @@ function HomePage(props) {
   const location = router.pathname;
 
   const myRef = useRef(null);
+  console.log(myRef);
   useEffect(() => {
+    console.log(myRef?.current?.offsetTop);
     if (location === "/lien-he") {
       window.scrollTo({
         behavior: "smooth",

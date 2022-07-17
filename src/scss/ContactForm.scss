@@ -14,6 +14,8 @@
       position: absolute;
       bottom: 0;
       right: 0;
+      pointer-events: none;
+      user-select: none;
     }
     .container {
       .wrapper__form-contact {
@@ -79,15 +81,9 @@
                 }
                 &:focus {
                   outline: none;
-                  // & + .placeholder {
-                  //   // display: none;
-                  //   // color: violet;
-                  // }
                 }
               }
-              // input:not(:placeholder-shown) + .placeholder {
-              //   display: none;
-              // }
+
               .textarea {
                 width: 100%;
                 font-size: 16px;

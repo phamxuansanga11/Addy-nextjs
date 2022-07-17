@@ -24,8 +24,8 @@ function Search(props) {
   };
 
   useEffect(() => {
-    console.log(valueSearch);
-  }, [valueSearch]);
+    console.log(query);
+  }, [query]);
 
   return (
     <section className="section__search">
@@ -41,7 +41,7 @@ function Search(props) {
             <input
               type="text"
               placeholder="Hướng dẫn sử dụng phần mềm..."
-              value={valueSearch}
+              value={query}
               // onChange={(e) => setValueSearch(e.target.value)}
               onChange={(event) => setQuery(event.target.value)}
               onSubmit={() => search()}

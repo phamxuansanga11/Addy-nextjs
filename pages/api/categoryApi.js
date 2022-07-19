@@ -2,7 +2,7 @@ import axiosClient from "./axiosClient";
 
 const categoryApi = {
   getAll(params) {
-    const url = "/contect-covid";
+    const url = "/posts?";
     return axiosClient.get(url, { params: params });
   },
   get(id) {

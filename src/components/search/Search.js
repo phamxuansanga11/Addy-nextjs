@@ -1,31 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 
 import * as ga from "../../../libs/ga";
 
 Search.propTypes = {};
 
-{
-  /* <img src="../../../img/logo.png" alt="len" /> */
-}
-
 function Search(props) {
-  // const [valueSearch, setValueSearch] = useState("");
+  const [valueSearch, setValueSearch] = useState("");
 
-  const [query, setQuery] = useState("");
+  const setTimeOutRef = useRef(null);
+
+  // const [query, setQuery] = useState("");
+
+  const handleSubmit = useCallback((newFilter) => {
+    console.log("newFilter:", newFilter);
+  }, []);
+
+  const handleOnChange = (e) => {
+    let valueInput = e.target.value;
+
+    setValueSearch(valueInput);
+
+    if (setTimeOutRef.current) {
+      clearTimeout(setTimeOutRef.current);
+    }
+
+    setTimeOutRef.current = setTimeout(() => {
+      const formValue = {
+        valueSearch: valueInput,
+      };
+      handleSubmit(formValue);
+    }, 500);
+  };
 
   const search = () => {
     ga.event({
       action: "search",
       params: {
-        search_term: query,
+        search_term: valueSearch,
       },
     });
   };
 
-  useEffect(() => {
-    console.log(query);
-  }, [query]);
+  // useEffect(() => {
+  //   console.log(valueSearch);
+  // }, [valueSearch]);
 
   return (
     <section className="section__search">
@@ -41,9 +60,9 @@ function Search(props) {
             <input
               type="text"
               placeholder="Hướng dẫn sử dụng phần mềm..."
-              value={query}
-              // onChange={(e) => setValueSearch(e.target.value)}
-              onChange={(event) => setQuery(event.target.value)}
+              value={valueSearch}
+              onChange={handleOnChange}
+              // onChange={(event) => setQuery(event.target.value)}
               onSubmit={() => search()}
             />
           </div>

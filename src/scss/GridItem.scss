@@ -1,7 +1,9 @@
 .item__posts {
   > a {
+    display: none;
+
     overflow: hidden;
-    display: flex;
+    // display: flex;
     &:hover {
       > img {
         transform: scale(1.1);
@@ -64,5 +66,12 @@
     .time {
       margin-left: 10px;
     }
+  }
+}
+
+@media screen and(max-width: 1200px) {
+  .item__posts > a img {
+    height: 193px;
+    object-fit: cover;
   }
 }

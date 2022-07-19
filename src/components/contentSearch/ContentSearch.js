@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ContentSearchItem from "./contentSearchItem/ContentSearchItem";
+import Pagination from "../pagination/Pagination";
 
 ContentSearch.propTypes = {};
 
@@ -87,19 +88,7 @@ function ContentSearch(props) {
             ))}
           </div>
         </div>
-        <div className="paginations__search-page">
-          <ul className="pagination__list">
-            <li className="pagination__list-option --prev__btn">
-              <span>←</span>
-            </li>
-            <li className="pagination__list-option active">1</li>
-            <li className="pagination__list-option">2</li>
-            <li className="pagination__list-option">3</li>
-            <li className="pagination__list-option --next__btn">
-              <span>→</span>
-            </li>
-          </ul>
-        </div>
+        <Pagination />
       </div>
     </section>
   );

@@ -4,6 +4,7 @@
     .new__post {
       .new__post-title {
         h2 {
+          user-select: none;
           font-size: 32px;
           font-family: br;
           line-height: normal;

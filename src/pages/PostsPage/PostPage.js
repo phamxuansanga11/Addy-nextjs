@@ -9,19 +9,19 @@ import Search from "../../components/search/Search";
 PostPage.propTypes = {};
 
 function PostPage(props) {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
+  // const [scrollPosition, setScrollPosition] = useState(0);
+  // const handleScroll = () => {
+  //   const position = window.pageYOffset;
+  //   setScrollPosition(position);
+  // };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
   return (
     <>
       <Header />

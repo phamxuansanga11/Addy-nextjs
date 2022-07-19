@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import Header from "../../components/header/Header";
 import AddyCrm from "../../components/addyCrm/AddyCrm";
@@ -12,8 +12,6 @@ import Contact from "../../components/contact/Contact";
 import Footer from "../../components/footer/Footer";
 import { useRouter } from "next/router";
 
-// import { createContext } from "react";
-
 HomePage.propTypes = {};
 
 function HomePage(props) {
@@ -22,7 +20,7 @@ function HomePage(props) {
 
   const myRef = useRef(null);
   // console.log(myRef);
-  useEffect(() => {
+  useLayoutEffect(() => {
     console.log(myRef?.current?.offsetTop);
     if (location === "/lien-he") {
       window.scrollTo({

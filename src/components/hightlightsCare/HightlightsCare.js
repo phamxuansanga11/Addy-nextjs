@@ -21,6 +21,8 @@ function HightlightsCare(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
 
+  const [active, setActive] = useState(1);
+
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
@@ -34,15 +36,17 @@ function HightlightsCare(props) {
   console.log(posts);
 
   // Get current posts
-  const indexOfLastPost = useMemo(() => currentPage * postsPerPage);
-  const indexOfFirstPost = useMemo(() => indexOfLastPost - postsPerPage);
-  const currentPosts = useMemo(() =>
-    posts.slice(indexOfFirstPost, indexOfLastPost)
-  );
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
   console.log("re-render....");
 
   const paginate = (pageNumber) => {
-    return setCurrentPage(pageNumber);
+    setCurrentPage(pageNumber);
+    setActive(pageNumber);
+    if (active === pageNumber) {
+    }
   };
   // const router = useRouter();
 
@@ -52,7 +56,7 @@ function HightlightsCare(props) {
   //   _totalRows: 1,
   // });
 
-  const [duLieu, setDulieu] = useState();
+  // const [duLieu, setDulieu] = useState();
 
   // useEffect(() => {
   //   const paramsString = queryString.stringify(pagination);
@@ -88,6 +92,8 @@ function HightlightsCare(props) {
                 postsPerPage={postsPerPage}
                 totalPosts={posts.length}
                 paginate={paginate}
+                // tagLiRef={tagLiRef}
+                active={active}
               />
             </div>
             <div className="wrapper__grid-right">

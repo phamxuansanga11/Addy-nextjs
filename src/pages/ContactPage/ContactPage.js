@@ -26,7 +26,7 @@ function HomePage(props) {
     if (location === "/lien-he") {
       window.scrollTo({
         behavior: "smooth",
-        top: myRef?.current?.offsetTop,
+        top: myRef?.current?.offsetTop - 80,
       });
     }
   });

@@ -19,14 +19,16 @@ function HomePage(props) {
   const location = router.pathname;
 
   const myRef = useRef(null);
+  const position = useRef(null);
+
   // console.log(myRef);
   useLayoutEffect(() => {
-    let positionY = myRef?.current?.offsetTop;
+    position = myRef?.current?.offsetTop;
     console.log(positionY);
     if (location === "/lien-he") {
       window.scrollTo({
         behavior: "smooth",
-        top: positionY,
+        top: position,
       });
     }
   });

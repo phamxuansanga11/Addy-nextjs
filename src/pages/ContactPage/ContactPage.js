@@ -22,10 +22,11 @@ function HomePage(props) {
   // console.log(myRef);
   useLayoutEffect(() => {
     console.log(myRef?.current?.offsetTop);
+    let positionY = myRef?.current?.offsetTop;
     if (location === "/lien-he") {
       window.scrollTo({
         behavior: "smooth",
-        top: myRef?.current?.offsetTop - 80,
+        top: positionY,
       });
     }
   });

@@ -21,8 +21,8 @@ function HomePage(props) {
   const myRef = useRef(null);
   // console.log(myRef);
   useLayoutEffect(() => {
-    console.log(myRef?.current?.offsetTop);
     let positionY = myRef?.current?.offsetTop;
+    console.log(positionY);
     if (location === "/lien-he") {
       window.scrollTo({
         behavior: "smooth",

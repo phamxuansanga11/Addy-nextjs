@@ -35,6 +35,10 @@
       outline: 1px solid #000;
       width: 40px;
       height: 40px;
+      &.disables {
+        opacity: 0.5;
+        pointer-events: none;
+      }
       &:hover {
         background-color: #10213d;
         color: #fff;

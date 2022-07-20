@@ -1,12 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import GridItem from "./gridItem/GridItem";
 import SideBarRight from "./sideBarRight/SideBarRight";
 import categoryApi from "../../../pages/api/categoryApi";
-import { useRouter } from "next/router";
 
-import queryString from "query-string";
-import axios from "axios";
 import Pagination from "../pagination/Pagination";
 
 HightlightsCare.propTypes = {};
@@ -19,14 +16,17 @@ function HightlightsCare(props) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(10);
+  const [postsPerPage, setPostsPerPage] = useState(21);
 
   const [active, setActive] = useState(1);
 
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+      const res = await categoryApi.getAll();
+      // const res = await axios.get(
+      //   "https://62d4e0b9cd960e45d45cfd64.mockapi.io/api/data"
+      // );
       setPosts(res?.data);
       setLoading(false);
     };
@@ -40,40 +40,36 @@ function HightlightsCare(props) {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  console.log("re-render....");
+  //total posts
+  const totalPosts = Math.ceil(posts.length / postsPerPage);
+
+  console.log("re-render....", totalPosts);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     setActive(pageNumber);
-    if (active === pageNumber) {
+  };
+
+  const handleSetDownCurrentPage = () => {
+    console.log("page - 1");
+    if (active - 1 > 1) {
+      setActive(active - 1);
+      setCurrentPage((prev) => prev - 1);
+    } else {
+      setActive(1);
+      setCurrentPage(1);
     }
   };
-  // const router = useRouter();
-
-  // const [pagination, setPagination] = useState({
-  //   _page: 1,
-  //   _limit: 10,
-  //   _totalRows: 1,
-  // });
-
-  // const [duLieu, setDulieu] = useState();
-
-  // useEffect(() => {
-  //   const paramsString = queryString.stringify(pagination);
-
-  //   // router.push(`${router.pathname}?${paramsString}`);
-
-  //   // console.log(router);
-
-  //   console.log(`?${paramsString}`);
-
-  //   const fetchData = async () => {
-  //     const data = await categoryApi.getAll({ params: `${paramsString}` });
-  //     setDulieu(data?.data);
-  //     console.log(data?.data);
-  //   };
-  //   fetchData(paramsString);
-  // }, [pagination]);
+  const handleSetUpCurrentPage = () => {
+    console.log("page + 1");
+    if (active + 1 < totalPosts) {
+      setActive(active + 1);
+      setCurrentPage((prev) => prev + 1);
+    } else {
+      setActive(totalPosts);
+      setCurrentPage(totalPosts);
+    }
+  };
 
   return (
     <section className="section__hightlights-care">
@@ -92,8 +88,9 @@ function HightlightsCare(props) {
                 postsPerPage={postsPerPage}
                 totalPosts={posts.length}
                 paginate={paginate}
-                // tagLiRef={tagLiRef}
                 active={active}
+                handleSetDownCurrentPage={handleSetDownCurrentPage}
+                handleSetUpCurrentPage={handleSetUpCurrentPage}
               />
             </div>
             <div className="wrapper__grid-right">

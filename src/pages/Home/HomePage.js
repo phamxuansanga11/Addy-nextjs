@@ -11,18 +11,9 @@ import Faq from "../../components/faq/Faq";
 import Contact from "../../components/contact/Contact";
 import Footer from "../../components/footer/Footer";
 
-// import { createContext } from "react";
-
-// export const content = createContext();
-
 HomePage.propTypes = {};
 
 function HomePage(props) {
-  // const executeScroll = () =>
-  //   window.scrollTo({
-  //     behavior: "smooth",
-  //     top: myRef?.current?.offsetTop - 100,
-  //   });
   const myRef = useRef(null);
 
   const executeScroll = () => {

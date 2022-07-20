@@ -1,4 +1,4 @@
-import DocumentPage from "../src/pages/DocumentPage/DocumentPage";
+import DocumentPage from "../src/pages/DocumentDetailPage/DocumentDetailPage";
 
 export default function Document(props) {
   return <DocumentPage />;

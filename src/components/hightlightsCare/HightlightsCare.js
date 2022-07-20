@@ -5,6 +5,9 @@ import React, {
   useMemo,
   useCallback,
 } from "react";
+
+import { useRouter } from "next/router";
+
 import PropTypes from "prop-types";
 import GridItem from "./gridItem/GridItem";
 import SideBarRight from "./sideBarRight/SideBarRight";
@@ -22,9 +25,13 @@ function HightlightsCare(props) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(21);
+  const [postsPerPage, setPostsPerPage] = useState(10);
+
+  const [params, setParams] = useState("State Params...");
 
   const [active, setActive] = useState(1);
+
+  const router = useRouter();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -37,7 +44,7 @@ function HightlightsCare(props) {
       setLoading(false);
     };
     fetchPosts();
-  }, []);
+  }, [params]);
 
   console.log(posts);
 
@@ -46,27 +53,32 @@ function HightlightsCare(props) {
     () => currentPage * postsPerPage,
     [currentPage, postsPerPage]
   );
-  const indexOfFirstPost = useMemo(
-    () => indexOfLastPost - postsPerPage,
-    [postsPerPage]
-  );
-  const currentPosts = useMemo(
-    () => posts.slice(indexOfFirstPost, indexOfLastPost),
-    [posts, indexOfFirstPost, indexOfLastPost]
-  );
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   //total posts
   const totalPosts = useMemo(
     () => Math.ceil(posts.length / postsPerPage),
     [posts, postsPerPage]
   );
+
+  //funciton click category
+  const handleClickCategoryP = useCallback(
+    (title) => {
+      // setParams(title);
+      console.log("ham` ong noi...", title);
+      // router.push(title);
+    },
+    [params]
+  );
+
   const rederRef = useRef(1);
   console.log("re-render....", rederRef.current++);
 
-  const paginate = (pageNumber) => {
+  const paginate = useCallback((pageNumber) => {
     setCurrentPage(pageNumber);
     setActive(pageNumber);
-  };
+  }, []);
 
   const handleSetDownCurrentPage = useCallback(() => {
     console.log("page - 1");
@@ -77,7 +89,7 @@ function HightlightsCare(props) {
       setActive(1);
       setCurrentPage(1);
     }
-  }, [active]);
+  }, [active, totalPosts]);
   const handleSetUpCurrentPage = useCallback(() => {
     console.log("page + 1");
     if (active + 1 < totalPosts) {
@@ -87,7 +99,7 @@ function HightlightsCare(props) {
       setActive(totalPosts);
       setCurrentPage(totalPosts);
     }
-  }, [active]);
+  }, [active, totalPosts]);
 
   return (
     <section className="section__hightlights-care">
@@ -112,7 +124,10 @@ function HightlightsCare(props) {
               />
             </div>
             <div className="wrapper__grid-right">
-              <SideBarRight />
+              <SideBarRight
+                params={params}
+                handleClickCategoryP={handleClickCategoryP}
+              />
             </div>
           </div>
         </div>

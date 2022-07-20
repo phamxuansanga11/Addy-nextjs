@@ -2,32 +2,44 @@ import React from "react";
 import PropTypes from "prop-types";
 import CateGoryItem from "./categoryItem/CateGoryItem";
 
-SideBarCategory.propTypes = {};
+SideBarCategory.propTypes = {
+  params: PropTypes.string,
+  handleClickCategoryP: PropTypes.func,
+};
 
-function SideBarCategory(props) {
-  const handleClickCategory = () => {
-    console.log("click category...");
-  };
+SideBarCategory.defaultProps = {
+  params: "",
+  handleClickCategoryP: null,
+};
 
+function SideBarCategory({ params, handleClickCategoryP }) {
   return (
     <>
       <h2 className="title">Danh mục</h2>
       <div className="category">
         <CateGoryItem
           title="Kiến thức crm"
-          handleClickCategory={handleClickCategory}
+          handleClickCategoryP={handleClickCategoryP}
+          params={params}
+          link="?kien-thuc"
         />
         <CateGoryItem
           title="Lợi ích crm"
-          handleClickCategory={handleClickCategory}
+          handleClickCategoryP={handleClickCategoryP}
+          params={params}
+          link="?loi-ich"
         />
         <CateGoryItem
           title="Các ứng dụng của crm"
-          handleClickCategory={handleClickCategory}
+          handleClickCategoryP={handleClickCategoryP}
+          params={params}
+          link="?ung-dung"
         />
         <CateGoryItem
           title="Các tính năng của crm"
-          handleClickCategory={handleClickCategory}
+          handleClickCategoryP={handleClickCategoryP}
+          params={params}
+          link="?tinh-nang"
         />
       </div>
     </>

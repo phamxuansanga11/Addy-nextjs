@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
@@ -33,8 +33,6 @@ function Pagination({
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }
-  const tagLiRef = useRef();
-  console.log(tagLiRef.current);
 
   return (
     <div className="paginations">

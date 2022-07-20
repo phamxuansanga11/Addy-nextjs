@@ -1,4 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  useMemo,
+  useCallback,
+} from "react";
 import PropTypes from "prop-types";
 import GridItem from "./gridItem/GridItem";
 import SideBarRight from "./sideBarRight/SideBarRight";
@@ -36,21 +42,33 @@ function HightlightsCare(props) {
   console.log(posts);
 
   // Get current posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const indexOfLastPost = useMemo(
+    () => currentPage * postsPerPage,
+    [currentPage, postsPerPage]
+  );
+  const indexOfFirstPost = useMemo(
+    () => indexOfLastPost - postsPerPage,
+    [postsPerPage]
+  );
+  const currentPosts = useMemo(
+    () => posts.slice(indexOfFirstPost, indexOfLastPost),
+    [posts, indexOfFirstPost, indexOfLastPost]
+  );
 
   //total posts
-  const totalPosts = Math.ceil(posts.length / postsPerPage);
-
-  console.log("re-render....", totalPosts);
+  const totalPosts = useMemo(
+    () => Math.ceil(posts.length / postsPerPage),
+    [posts, postsPerPage]
+  );
+  const rederRef = useRef(1);
+  console.log("re-render....", rederRef.current++);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     setActive(pageNumber);
   };
 
-  const handleSetDownCurrentPage = () => {
+  const handleSetDownCurrentPage = useCallback(() => {
     console.log("page - 1");
     if (active - 1 > 1) {
       setActive(active - 1);
@@ -59,8 +77,8 @@ function HightlightsCare(props) {
       setActive(1);
       setCurrentPage(1);
     }
-  };
-  const handleSetUpCurrentPage = () => {
+  }, [active]);
+  const handleSetUpCurrentPage = useCallback(() => {
     console.log("page + 1");
     if (active + 1 < totalPosts) {
       setActive(active + 1);
@@ -69,7 +87,7 @@ function HightlightsCare(props) {
       setActive(totalPosts);
       setCurrentPage(totalPosts);
     }
-  };
+  }, [active]);
 
   return (
     <section className="section__hightlights-care">

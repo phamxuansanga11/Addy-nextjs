@@ -18,18 +18,24 @@ function HomePage(props) {
   const router = useRouter();
   const location = router.pathname;
 
+  console.log(location);
+
   const myRef = useRef(null);
 
-  // console.log(myRef);
-  useLayoutEffect(() => {
-    console.log(myRef?.current?.offsetTop);
+  const handlePositionY = (value) => {
+    console.log(value.offsetTop);
     if (location === "/lien-he") {
       window.scrollTo({
         behavior: "smooth",
-        top: myRef?.current?.offsetTop - 80,
+        top: value?.offsetTop - 80,
       });
     }
-  });
+  };
+
+  // console.log(myRef);
+  // useLayoutEffect(() => {
+  //   // console.log(myRef?.current?.offsetTop);
+  // });
 
   return (
     <>
@@ -45,7 +51,7 @@ function HomePage(props) {
       <Features />
       <UseSolution />
       <Slider />
-      <ContactForm myRef={myRef} />
+      <ContactForm myRef={myRef} handlePositionY={handlePositionY} />
       <Faq />
       <Contact />
       <Footer />

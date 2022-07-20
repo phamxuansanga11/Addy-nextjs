@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import Alert from "@mui/material/Alert";
@@ -9,7 +9,13 @@ ContactForm.propTypes = {};
   /* <img src="../../../img/logo.png" alt="len" /> */
 }
 
-function ContactForm({ myRef }) {
+function ContactForm({ myRef, handlePositionY }) {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    handlePositionY(sectionRef.current);
+  }, []);
+
   const {
     register,
     handleSubmit,
@@ -33,7 +39,10 @@ function ContactForm({ myRef }) {
     LINK: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
   };
   return (
-    <section className="section__contact-form position-relative" ref={myRef}>
+    <section
+      className="section__contact-form position-relative"
+      ref={sectionRef}
+    >
       <div className="contact__bg">
         <div className="contact__bg-top">
           <img src="../../../img/bg-top.png" alt="" />

@@ -3,9 +3,17 @@ import PropTypes from "prop-types";
 import PostCareItem from "../postCareItem/PostCareItem";
 import SideBarCategory from "./sideBarCategory/SideBarCategory";
 
-SideBarRight.propTypes = {};
+SideBarRight.propTypes = {
+  params: PropTypes.string,
+  handleClickCategoryP: PropTypes.func,
+};
 
-function SideBarRight(props) {
+SideBarRight.defaultProps = {
+  params: "",
+  handleClickCategoryP: null,
+};
+
+function SideBarRight({ params, handleClickCategoryP }) {
   const Data = [
     {
       image: "../../../img/new-6.jpg",
@@ -30,7 +38,10 @@ function SideBarRight(props) {
   ];
   return (
     <>
-      <SideBarCategory />
+      <SideBarCategory
+        params={params}
+        handleClickCategoryP={handleClickCategoryP}
+      />
       <h2 className="title">Bạn có thể quan tâm</h2>
       <PostCareItem data={Data} />
     </>

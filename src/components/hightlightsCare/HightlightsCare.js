@@ -33,9 +33,6 @@ function HightlightsCare(props) {
     const fetchPosts = async () => {
       setLoading(true);
       const res = await categoryApi.getAll();
-      // const res = await axios.get(
-      //   "https://62d4e0b9cd960e45d45cfd64.mockapi.io/api/data"
-      // );
       setPosts(res?.data);
       setLoading(false);
     };
@@ -66,6 +63,7 @@ function HightlightsCare(props) {
     [params]
   );
 
+  //log so lan` re-render
   const rederRef = useRef(1);
   console.log("re-render....", rederRef.current++);
 

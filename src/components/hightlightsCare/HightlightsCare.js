@@ -99,7 +99,7 @@ function HightlightsCare(props) {
     <section className="section__hightlights-care">
       {loading && (
         <div className="overlay__loading">
-          <div class="lds-roller">
+          <div className="lds-roller">
             <div></div>
             <div></div>
             <div></div>

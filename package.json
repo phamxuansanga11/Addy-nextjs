@@ -28,7 +28,6 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.33.1",
     "react-modal": "^3.15.1",
-    "react-spinners": "^0.13.3",
     "swiper": "^8.3.0",
     "yup": "^0.32.11"
   },

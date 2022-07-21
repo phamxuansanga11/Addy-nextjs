@@ -6,8 +6,6 @@ import React, {
   useCallback,
 } from "react";
 
-import { useRouter } from "next/router";
-
 import PropTypes from "prop-types";
 import GridItem from "./gridItem/GridItem";
 import SideBarRight from "./sideBarRight/SideBarRight";
@@ -30,8 +28,6 @@ function HightlightsCare(props) {
   const [params, setParams] = useState("State Params...");
 
   const [active, setActive] = useState(1);
-
-  const router = useRouter();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -65,9 +61,7 @@ function HightlightsCare(props) {
   //funciton click category
   const handleClickCategoryP = useCallback(
     (title) => {
-      // setParams(title);
       console.log("ham` ong noi...", title);
-      // router.push(title);
     },
     [params]
   );
@@ -103,7 +97,20 @@ function HightlightsCare(props) {
 
   return (
     <section className="section__hightlights-care">
-      {loading && <div className="bg__gray"></div>}
+      {loading && (
+        <div className="overlay__loading">
+          <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      )}
       <div className="container">
         <div className="hightlights__care">
           <div className="wrapper__grid">

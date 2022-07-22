@@ -96,7 +96,7 @@ function ContactForm({ handleScrollContactForm }) {
                         message: "Họ tên phải tối thiểu 4 kí tự.",
                       },
                       maxLength: {
-                        value: 14,
+                        value: 25,
                         message: "Họ tên tối đa 14 kí tự.",
                       },
                       pattern: {

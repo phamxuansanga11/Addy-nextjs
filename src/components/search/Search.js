@@ -42,10 +42,6 @@ function Search(props) {
     });
   };
 
-  // useEffect(() => {
-  //   console.log(valueSearch);
-  // }, [valueSearch]);
-
   return (
     <section className="section__search">
       <div className="container">

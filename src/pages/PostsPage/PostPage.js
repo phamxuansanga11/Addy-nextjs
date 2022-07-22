@@ -5,6 +5,7 @@ import HightlightsCare from "../../components/hightlightsCare/HightlightsCare";
 import Footer from "../../components/footer/Footer";
 import Search from "../../components/search/Search";
 import categoryApi from "../../../pages/api/categoryApi";
+import Loading from "../../components/loading/Loading";
 
 function PostPage(props) {
   const [dataPostPage, setDataPostPage] = useState(null);
@@ -27,20 +28,7 @@ function PostPage(props) {
 
   return (
     <>
-      {loading && (
-        <div className="overlay__loading">
-          <div className="lds-roller">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
-      )}
+      {loading && <Loading />}
       <Header />
       <Search />
       <NewPost dataPostPage={dataPostPage} />

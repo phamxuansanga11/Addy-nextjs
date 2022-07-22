@@ -14,11 +14,11 @@ function SearchDetailPost(props) {
       <section className="section__search-detail-post">
         <div className="container">
           <div className="btn__backtodocument">
-            <Link href="/document">
+            <Link href="/bai-viet">
               <a className="btn__back">Tài liệu</a>
             </Link>
             <span> {`>`} </span>
-            <Link href="/searchDetail">
+            <Link href="/bai-viet">
               <a className="btn__back">Kết quả tìm kiếm</a>
             </Link>
           </div>

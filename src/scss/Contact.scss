@@ -32,8 +32,6 @@
           i {
             display: flex;
             margin-right: 10px;
-            img {
-            }
           }
           span {
             color: #fff;
@@ -43,12 +41,6 @@
           background-color: #fe4e4e;
           &:hover {
             background-color: #d12828;
-          }
-          i {
-            img {
-            }
-          }
-          span {
           }
         }
         .contact__btn-email {

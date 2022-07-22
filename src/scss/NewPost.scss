@@ -29,8 +29,6 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 30px;
-        .grid__left {
-        }
         .grid__right {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -44,8 +42,6 @@
         .--grid {
           .grid__item {
             position: relative;
-            // height: 100%;
-            // overflow: hidden;
             height: 100%;
             > img {
               width: 100%;
@@ -102,8 +98,6 @@
                   display: flex;
                   i {
                     margin-right: 10px;
-                    img {
-                    }
                   }
                   > span {
                     display: flex;

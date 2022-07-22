@@ -29,8 +29,8 @@ function VideoItem({ data }) {
 
   return (
     <>
-      <div className="video__item ">
-        <div className="video" onClick={openModal}>
+      <div className="video__item" onClick={openModal}>
+        <div className="video">
           <img src={`${data.image}`} alt="" />
           <div className="video__btn-play">
             <i>
@@ -53,7 +53,7 @@ function VideoItem({ data }) {
               <span>{data.view}</span>
             </div>
           </div>
-          <a href="">Hướng dẫn đăng ký tài khoản Addy</a>
+          <span>Hướng dẫn đăng ký tài khoản Addy</span>
         </div>
       </div>
       <div className="Modal">

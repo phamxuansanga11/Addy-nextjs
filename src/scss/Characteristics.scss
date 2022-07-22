@@ -26,12 +26,6 @@
             .title {
               display: flex;
               align-items: center;
-              h5 {
-              }
-              i {
-                img {
-                }
-              }
             }
             .text__content {
               font-size: 16px;
@@ -40,13 +34,10 @@
           }
         }
         .characteristics__flex-mid {
-          //   display: flex;
-          //   width: 100%;
           display: flex;
           width: 50%;
           padding: 0 5px;
           > img {
-            // width: auto;
             margin: auto;
             object-fit: contain;
           }
@@ -54,15 +45,9 @@
         .characteristics__flex-right {
           .characteristics__item {
             .title {
-              h5 {
-              }
               i {
                 margin-right: 10px;
-                img {
-                }
               }
-            }
-            .text__content {
             }
           }
         }

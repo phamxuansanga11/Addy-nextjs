@@ -1,12 +1,10 @@
 footer {
   background-color: #10213d;
-  //   height: 310px;
   .--container__footer {
     padding: 40px 0;
     .footer__grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      //   gap: 30px;
       .footer__grid-item {
         padding: 0 15px;
         .logo__footer {
@@ -46,7 +44,6 @@ footer {
         }
         .item__icon {
           display: flex;
-          // justify-content: space-between;
           .icon {
             margin-right: 10px;
             border-radius: 50%;

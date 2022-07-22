@@ -64,8 +64,6 @@
           }
           .img__content {
             margin-bottom: 15px;
-            > img {
-            }
             .caption__img {
               font-size: 13px;
               font-family: br;
@@ -85,8 +83,6 @@
                 line-height: 24px;
                 color: #000;
                 display: flex;
-                > span {
-                }
                 > p {
                   font-size: 14px;
                   font-family: br;
@@ -97,22 +93,12 @@
                   margin-left: 10px;
                 }
               }
-              .text__content-item__params {
-                > p {
-                  //   font-size: 14px;
-                  //   font-family: br;
-                  //   line-height: 24px;
-                  //   color: #55555a;
-                }
-              }
             }
           }
         }
       }
       .search__detail-post__grid-right {
         .blog__interested {
-          h2 {
-          }
           .blog__interested-content {
             .blog__interested-content-item {
               font-size: 16px;
@@ -127,8 +113,6 @@
           }
         }
         .new__blog {
-          h2 {
-          }
           .new__blog-item {
             margin-bottom: 15px;
             > a {

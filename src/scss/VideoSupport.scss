@@ -23,8 +23,6 @@
             cursor: pointer;
             .video {
               position: relative;
-              > img {
-              }
               .video__btn-play {
                 position: absolute;
                 top: 50%;
@@ -33,12 +31,8 @@
 
                 i {
                   display: flex;
-                  img {
-                  }
                 }
               }
-            }
-            .time__view {
             }
             .--decription {
               display: flex;
@@ -51,8 +45,6 @@
                 i {
                   display: flex;
                   margin-right: 6px;
-                  img {
-                  }
                 }
                 span {
                   font-size: 12px;
@@ -62,7 +54,7 @@
                 }
               }
             }
-            > a {
+            > span {
               font-size: 20px;
               font-family: br;
               line-height: normal;
@@ -116,8 +108,6 @@
               }
             }
             .wrapper__decription {
-              .time__view {
-              }
               .--decription {
                 display: flex;
                 margin: 10px 0;
@@ -129,8 +119,6 @@
                   i {
                     display: flex;
                     margin-right: 6px;
-                    img {
-                    }
                   }
                   span {
                     font-size: 12px;
@@ -140,7 +128,7 @@
                   }
                 }
               }
-              > a {
+              > span {
                 font-size: 20px;
                 font-family: br;
                 line-height: normal;
@@ -164,7 +152,6 @@
               position: relative;
               display: flex;
               overflow: hidden;
-
               &:hover {
                 > img {
                   transform: scale(1.1);
@@ -200,17 +187,7 @@
               display: flex;
               flex-direction: column-reverse;
               justify-content: center;
-              .--decription {
-                .--icon {
-                  i {
-                    img {
-                    }
-                  }
-                  > span {
-                  }
-                }
-              }
-              > a {
+              > span {
                 font-size: 18px;
                 font-family: br;
                 color: #000;
@@ -264,13 +241,23 @@
     .container
     .video__support
     .video__support-grid
+    .video__support-left
+    .video__item
+    .wrapper__decription
+    > span {
+    font-size: 16px;
+  }
+  .section__video
+    .container
+    .video__support
+    .video__support-grid
     .video__support-right
     .video__item {
     flex-direction: column;
     .wrapper__decription {
       margin-left: 0;
       margin-top: 10px;
-      > a {
+      > span {
         font-size: 16px;
       }
     }

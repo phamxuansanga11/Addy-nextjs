@@ -13,17 +13,14 @@
       transition: 0.2s;
     }
     .bg__black {
-      // display: block;
       opacity: 1;
       transition: 0.2s;
     }
   }
   .bg__black {
     z-index: -1;
-    // pointer-events: none;
     transition: 0.2s;
     opacity: 0;
-    // display: none;
     position: fixed;
     top: 0;
     right: 0;

@@ -260,4 +260,19 @@
   .section__video .container .video__support .title {
     font-size: 28px;
   }
+  .section__video
+    .container
+    .video__support
+    .video__support-grid
+    .video__support-right
+    .video__item {
+    flex-direction: column;
+    .wrapper__decription {
+      margin-left: 0;
+      margin-top: 10px;
+      > a {
+        font-size: 16px;
+      }
+    }
+  }
 }

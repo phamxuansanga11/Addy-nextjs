@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
-NewPost.propTypes = {};
+NewPost.propTypes = {
+  dataPostPage: PropTypes.array,
+};
 
-{
-  /* <img src="../../../img/logo.png" alt="len" /> */
-}
+NewPost.defaultProps = {
+  dataPostPage: [],
+};
 
-function NewPost(props) {
+function NewPost({ dataPostPage }) {
+  const [oneItem, setOneItem] = useState();
+  const [threeItem, setThreeItem] = useState();
+
+  useEffect(() => {
+    if (dataPostPage?.length > 0) {
+      const newItem = dataPostPage.slice(0, 4);
+      setOneItem(newItem[0]);
+      setThreeItem(newItem.slice(1, 4));
+    }
+  }, [dataPostPage]);
+
   return (
     <section className="section__newpost">
       <div className="container">
@@ -20,12 +33,9 @@ function NewPost(props) {
             <div className="grid__left --grid">
               <Link href="/bai-viet-tim-kiem-chi-tiet">
                 <a className="grid__item">
-                  <img src="../../../img/new-1.jpg" alt="" />
+                  <img src={oneItem?.image} alt="" />
                   <div className="grid__item-text">
-                    <h3 className="title">
-                      4 Điểm mạnh trên Vsmart Aris mà bạn cần biết trước khi
-                      quyết định mua
-                    </h3>
+                    <h3 className="title">{oneItem?.title}</h3>
                     <div className="time">
                       <div className="time__icon">
                         <i>
@@ -34,76 +44,33 @@ function NewPost(props) {
                         <span>2</span>
                       </div>
                       <span className="dot">-</span>
-                      <span> 17 giờ trước </span>
+                      <span> {oneItem?.date} </span>
                     </div>
                   </div>
                 </a>
               </Link>
             </div>
             <div className="grid__right --grid">
-              <Link href="/bai-viet-tim-kiem-chi-tiet">
-                <a className="grid__item">
-                  <img src="../../../img/new-2.jpg" alt="" />
-                  <div className="grid__item-text">
-                    <h3 className="title">
-                      4 Điểm mạnh trên Vsmart Aris mà bạn cần biết trước khi
-                      quyết định mua
-                    </h3>
-                    <div className="time">
-                      <div className="time__icon">
-                        <i>
-                          <img src="../../../img/ic-mess.svg" alt="comment" />
-                        </i>
-                        <span>2</span>
+              {threeItem?.map((data) => (
+                <Link key={data.id} href="/bai-viet-tim-kiem-chi-tiet">
+                  <a className="grid__item">
+                    <img src={data?.image} alt="" />
+                    <div className="grid__item-text">
+                      <h3 className="title">{data?.title}</h3>
+                      <div className="time">
+                        <div className="time__icon">
+                          <i>
+                            <img src="../../../img/ic-mess.svg" alt="comment" />
+                          </i>
+                          <span>2</span>
+                        </div>
+                        <span className="dot"> - </span>
+                        <span> {data?.date} </span>
                       </div>
-                      <span className="dot"> - </span>
-                      <span> 17 giờ trước </span>
                     </div>
-                  </div>
-                </a>
-              </Link>
-              <Link href="/bai-viet-tim-kiem-chi-tiet">
-                <a className="grid__item">
-                  <img src="../../../img/new-3.jpg" alt="" />
-                  <div className="grid__item-text">
-                    <h3 className="title">
-                      4 Điểm mạnh trên Vsmart Aris mà bạn cần biết trước khi
-                      quyết định mua
-                    </h3>
-                    <div className="time">
-                      <div className="time__icon">
-                        <i>
-                          <img src="../../../img/ic-mess.svg" alt="comment" />
-                        </i>
-                        <span>2</span>
-                      </div>
-                      <span className="dot">-</span>
-                      <span> 17 giờ trước </span>
-                    </div>
-                  </div>
-                </a>
-              </Link>
-              <Link href="/bai-viet-tim-kiem-chi-tiet">
-                <a className="grid__item">
-                  <img src="../../../img/new-4.jpg" alt="" />
-                  <div className="grid__item-text">
-                    <h3 className="title">
-                      4 Điểm mạnh trên Vsmart Aris mà bạn cần biết trước khi
-                      quyết định mua
-                    </h3>
-                    <div className="time">
-                      <div className="time__icon">
-                        <i>
-                          <img src="../../../img/ic-mess.svg" alt="comment" />
-                        </i>
-                        <span>2</span>
-                      </div>
-                      <span className="dot">-</span>
-                      <span> 17 giờ trước </span>
-                    </div>
-                  </div>
-                </a>
-              </Link>
+                  </a>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

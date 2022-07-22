@@ -1,27 +1,25 @@
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  useMemo,
-  useCallback,
-} from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 
 import PropTypes from "prop-types";
 import GridItem from "./gridItem/GridItem";
 import SideBarRight from "./sideBarRight/SideBarRight";
-import categoryApi from "../../../pages/api/categoryApi";
 
 import Pagination from "../pagination/Pagination";
 
-HightlightsCare.propTypes = {};
+HightlightsCare.propTypes = {
+  dataPostPage: PropTypes.array,
+};
+
+HightlightsCare.defaultProps = {
+  dataPostPage: [],
+};
 
 {
   /* <img src="../../../img/logo.png" alt="len" /> */
 }
 
-function HightlightsCare(props) {
+function HightlightsCare({ dataPostPage }) {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
 
@@ -30,14 +28,10 @@ function HightlightsCare(props) {
   const [active, setActive] = useState(1);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      setLoading(true);
-      const res = await categoryApi.getAll();
-      setPosts(res?.data);
-      setLoading(false);
-    };
-    fetchPosts();
-  }, [params]);
+    if (dataPostPage) {
+      setPosts(dataPostPage);
+    }
+  }, [dataPostPage]);
 
   console.log(posts);
 
@@ -47,11 +41,11 @@ function HightlightsCare(props) {
     [currentPage, postsPerPage]
   );
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = posts?.slice(indexOfFirstPost, indexOfLastPost);
 
   //total posts
   const totalPosts = useMemo(
-    () => Math.ceil(posts.length / postsPerPage),
+    () => Math.ceil(posts?.length / postsPerPage),
     [posts, postsPerPage]
   );
 
@@ -62,10 +56,6 @@ function HightlightsCare(props) {
     },
     [params]
   );
-
-  //log so lan` re-render
-  const rederRef = useRef(1);
-  console.log("re-render....", rederRef.current++);
 
   const paginate = useCallback((pageNumber) => {
     setCurrentPage(pageNumber);
@@ -95,20 +85,6 @@ function HightlightsCare(props) {
 
   return (
     <section className="section__hightlights-care">
-      {loading && (
-        <div className="overlay__loading">
-          <div className="lds-roller">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
-      )}
       <div className="container">
         <div className="hightlights__care">
           <div className="wrapper__grid">
@@ -121,7 +97,7 @@ function HightlightsCare(props) {
               </div>
               <Pagination
                 postsPerPage={postsPerPage}
-                totalPosts={posts.length}
+                totalPosts={posts?.length}
                 paginate={paginate}
                 active={active}
                 handleSetDownCurrentPage={handleSetDownCurrentPage}

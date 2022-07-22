@@ -180,3 +180,24 @@
     padding-right: 0;
   }
 }
+
+@media screen and(max-width: 340px) {
+  .menu__mobie .menu__mobile-nav {
+    .menu__mobile-nav-logo > a img {
+      width: 110px;
+    }
+    .menu__mobile-nav-menu {
+      > li {
+        padding: 0.5rem 5px;
+      }
+    }
+    .menu__mobile-nav-btn .btn__use {
+      width: 150px;
+      height: 42px;
+      padding: 0;
+      > a {
+        font-size: 14px;
+      }
+    }
+  }
+}

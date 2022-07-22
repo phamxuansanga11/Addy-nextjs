@@ -30,59 +30,6 @@
         grid-template-columns: 1fr 1fr;
         gap: 30px;
         .grid__left {
-          //   .grid__item {
-          //     > img {
-          //     }
-          //     .grid__item-text {
-          //       padding: 10px 15px;
-          //       .title {
-          //         font-size: 20px;
-          //         font-family: br;
-          //         line-height: 24px;
-          //         color: #fff;
-          //         text-transform: none;
-          //         display: -webkit-inline-box;
-          //         -webkit-line-clamp: 3;
-          //         -webkit-box-orient: vertical;
-          //         text-overflow: ellipsis;
-          //         overflow: hidden;
-          //         transition: 0.3s;
-          //       }
-          //       .time {
-          //         display: flex;
-          //         .time__icon {
-          //           display: flex;
-          //           i {
-          //             margin-right: 10px;
-          //             img {
-          //             }
-          //           }
-          //           > span {
-          //             display: flex;
-          //             align-items: center;
-          //             font-size: 12px;
-          //             font-family: br;
-          //             line-height: 24px;
-          //             color: #fff;
-          //             text-transform: none;
-          //           }
-          //         }
-
-          //         .dot {
-          //           margin: 0 3px;
-          //         }
-          //         > span {
-          //           display: flex;
-          //           align-items: center;
-          //           font-size: 12px;
-          //           font-family: br;
-          //           line-height: 24px;
-          //           color: #fff;
-          //           text-transform: none;
-          //         }
-          //       }
-          //     }
-          //   }
         }
         .grid__right {
           display: grid;
@@ -127,7 +74,7 @@
             &:hover {
               > img {
                 transition: 0.2s;
-                transform: scale(1.2);
+                transform: scale(1.1);
               }
             }
             > img {

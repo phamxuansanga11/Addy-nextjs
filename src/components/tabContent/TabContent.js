@@ -75,12 +75,12 @@ function TabContent(props) {
             </ul>
           </div>
           <div className="wrapper__grid-right">
-            <h3>Tạo bài viết mới</h3>
             <div className="params__contents params">
               {tabs.map((tab, idx) => (
                 <div key={idx}>
                   {currentTab === `${tab.id}` && (
                     <div>
+                      <h3>{tab.tabTitle}</h3>
                       <p>{tab.content}</p>
                     </div>
                   )}

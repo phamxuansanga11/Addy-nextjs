@@ -7,30 +7,24 @@ import MenuMobile from "../menuMobile/MenuMobile";
 
 Header.propTypes = {};
 
-{
-  /* <img src="../../../img/logo.png" alt="len" /> */
-}
-
-function Header({ executeScroll, contact, number }) {
+function Header() {
   const myRef = useRef(null);
   const iconRef = useRef(null);
 
   const handleClickMenu = () => {
-    console.log("click menu", iconRef.current);
     iconRef.current.classList.add("active");
   };
 
   const handleCloseMenu = () => {
-    console.log("run func close menu...");
     iconRef.current.classList.remove("active");
   };
 
   const router = useRouter();
   const location = router.pathname;
 
-  const handleClick = async () => {
-    console.log("re-render...");
-    router.push("/contact");
+  const handleClickLienHe = async () => {
+    handleCloseMenu();
+    // router.push("/contact");
   };
 
   return (
@@ -107,7 +101,6 @@ function Header({ executeScroll, contact, number }) {
                       "": true,
                       active: location === "/lien-he",
                     })}
-                    // onClick={handleClick}
                   >
                     Liên hệ
                   </a>
@@ -128,7 +121,11 @@ function Header({ executeScroll, contact, number }) {
             <div className="header__nav-icon__mobile" onClick={handleClickMenu}>
               <i className="fa fa-bars"></i>
             </div>
-            <MenuMobile iconRef={iconRef} handleCloseMenu={handleCloseMenu} />
+            <MenuMobile
+              iconRef={iconRef}
+              handleCloseMenu={handleCloseMenu}
+              handleClickLienHe={handleClickLienHe}
+            />
           </div>
         </div>
       </header>

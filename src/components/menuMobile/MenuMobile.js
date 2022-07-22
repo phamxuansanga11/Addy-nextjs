@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 MenuMobile.propTypes = {};
 
-function MenuMobile({ iconRef, handleCloseMenu }) {
+function MenuMobile({ iconRef, handleCloseMenu, handleClickLienHe }) {
   const router = useRouter();
   const location = router.pathname;
 
@@ -80,7 +80,7 @@ function MenuMobile({ iconRef, handleCloseMenu }) {
             })}
           >
             <Link href="/lien-he">
-              <a>Liên hệ</a>
+              <a onClick={() => handleClickLienHe()}>Liên hệ</a>
             </Link>
           </li>
         </ul>

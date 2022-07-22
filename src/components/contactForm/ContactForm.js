@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import Alert from "@mui/material/Alert";
+
+import { useRouter } from "next/router";
 
 ContactForm.propTypes = {
   handleScrollContactForm: PropTypes.func,
@@ -12,6 +14,17 @@ ContactForm.defaultProps = {
 };
 
 function ContactForm({ handleScrollContactForm }) {
+  const router = useRouter();
+
+  const [varUp, setVarUp] = useState(1);
+
+  useEffect(() => {
+    if (router.pathname === "/lien-he") {
+      setVarUp((prev) => prev + 1);
+      // console.log("dung trang lien he r");
+    }
+  }, [router]);
+
   const {
     register,
     handleSubmit,
@@ -36,10 +49,11 @@ function ContactForm({ handleScrollContactForm }) {
   };
 
   const contactRef = useRef();
+
   useEffect(() => {
     // console.log("contactRef:", contactRef.current);
     handleScrollContactForm(contactRef.current);
-  });
+  }, [varUp]);
 
   return (
     <section

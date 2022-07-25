@@ -14,9 +14,6 @@ function SearchDetailPost(props) {
 
   const urlParams = router.pathname.slice(1, 9);
 
-  console.log(urlParams);
-  console.log(id);
-
   //State data từ call API
   const [postDetail, setPostDetail] = useState();
 
@@ -28,7 +25,7 @@ function SearchDetailPost(props) {
     const fetchPostDetail = async (category, id) => {
       setLoading(true);
       const resPostDetail = await categoryApi.get(category, id);
-      setPostDetail(resPostDetail.data);
+      setPostDetail(resPostDetail?.data);
       setLoading(false);
     };
     if (id) {
@@ -42,6 +39,7 @@ function SearchDetailPost(props) {
       <Header />
       <section className="section__search-detail-post">
         <div className="container">
+          {/* <h1>{id}</h1> */}
           <div className="btn__backtodocument">
             <Link href="/bai-viet">
               <a className="btn__back">{`< Trở về bài viết`}</a>

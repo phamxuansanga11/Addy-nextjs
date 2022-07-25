@@ -137,3 +137,26 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media screen and(max-width: 768px) {
+  .section__search-detail-post
+    .container
+    .search__detail-post__grid
+    .search__detail-post__grid-left
+    .item__detail
+    .title {
+    font-size: 27px;
+  }
+}
+
+@media screen and(max-width: 440px) {
+  .section__search-detail-post
+    .container
+    .search__detail-post__grid
+    .search__detail-post__grid-left
+    .item__detail
+    .title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}

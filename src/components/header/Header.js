@@ -22,11 +22,14 @@ function Header() {
   const router = useRouter();
   const location = router.pathname;
 
-  const id = location.slice(6);
+  //location detail
+  const locationDetail = router.asPath;
+  const newLocation = locationDetail.slice(1, 9);
+
+  const { id } = router.query;
 
   const handleClickLienHe = async () => {
     handleCloseMenu();
-    // router.push("/contact");
   };
 
   return (
@@ -73,8 +76,7 @@ function Header() {
                       "": true,
                       active:
                         location === "/bai-viet" ||
-                        location === "/bai-viet-tim-kiem-chi-tiet" ||
-                        location === `/data/${id}`,
+                        locationDetail === `/${newLocation}/${id}`,
                     })}
                   >
                     Bài viết

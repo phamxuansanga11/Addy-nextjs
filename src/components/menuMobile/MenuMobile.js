@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import classNames from "classnames";
@@ -9,7 +9,10 @@ MenuMobile.propTypes = {};
 function MenuMobile({ iconRef, handleCloseMenu, handleClickLienHe }) {
   const router = useRouter();
   const location = router.pathname;
-  const id = location.slice(6);
+  const locationDetail = router.asPath;
+  const newLocation = locationDetail.slice(1, 9);
+
+  const { id } = router.query;
 
   const handleCloseMenuChild = () => {
     console.log("close menu..");
@@ -54,7 +57,9 @@ function MenuMobile({ iconRef, handleCloseMenu, handleClickLienHe }) {
           <li
             className={classNames({
               "nav__menu-option": true,
-              active: location === "/bai-viet" || location === `/data/${id}`,
+              active:
+                location === "/bai-viet" ||
+                locationDetail === `/${newLocation}/${id}`,
             })}
           >
             <Link href="/bai-viet">

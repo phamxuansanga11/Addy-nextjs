@@ -1,5 +1,5 @@
-import SearchDetailPostPage from "../../src/pages/SearchDetailPostPage/SearchDetailPostPage";
+import Detail from "../../src/pages/DetailPage/DetailPage";
 
-export default function SearchDetailPost(props) {
-  return <SearchDetailPostPage />;
+export default function DetailPage(props) {
+  return <Detail />;
 }

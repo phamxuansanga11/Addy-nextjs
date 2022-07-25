@@ -149,4 +149,12 @@
     h2 {
     font-size: 28px;
   }
+  .section__newpost .container .new__post .new__post-grid .grid__right {
+    grid-template-columns: 1fr;
+    .grid__item {
+      &:nth-child(1) {
+        grid-column: auto;
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import Header from "../../components/header/Header";
 import NewPost from "../../components/newPosts/NewPost";
 import HightlightsCare from "../../components/hightlightsCare/HightlightsCare";
@@ -13,12 +13,24 @@ function PostPage(props) {
 
   const [loading, setLoading] = useState(false);
 
+  const newPost = useMemo(() => {
+    if (dataPostPage) {
+      return fourItem;
+    }
+  }, [dataPostPage]);
+
+  const extant = useMemo(() => {
+    if (dataPostPage) {
+      return dataPostPage;
+    }
+  }, [dataPostPage]);
+
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
       const res = await categoryApi.getAll();
       setFourItem(res?.data?.slice(0, 4));
-      setDataPostPage(res?.data.slice(4));
+      setDataPostPage(res?.data?.slice(4));
       setLoading(false);
     };
     fetchPosts();
@@ -33,8 +45,8 @@ function PostPage(props) {
       {loading && <Loading />}
       <Header />
       <Search />
-      <NewPost dataPostPage={fourItem} />
-      <HightlightsCare dataPostPage={dataPostPage} />
+      <NewPost dataPostPage={newPost} />
+      <HightlightsCare dataPostPage={extant} />
       <Footer />
     </>
   );

@@ -11,14 +11,13 @@ NewPost.defaultProps = {
 };
 
 function NewPost({ dataPostPage }) {
-  const [oneItem, setOneItem] = useState();
   const [threeItem, setThreeItem] = useState();
+  const [oneItem, setOneItem] = useState();
 
   useEffect(() => {
     if (dataPostPage?.length > 0) {
-      const newItem = dataPostPage.slice(0, 4);
-      setOneItem(newItem[0]);
-      setThreeItem(newItem.slice(1, 4));
+      setOneItem(dataPostPage[0]);
+      setThreeItem(dataPostPage.slice(1));
     }
   }, [dataPostPage]);
 
@@ -33,7 +32,7 @@ function NewPost({ dataPostPage }) {
           </div>
           <div className="new__post-grid">
             <div className="grid__left --grid">
-              <Link href={`/bai-viet/${oneItem?.id}`}>
+              <Link key={oneItem?.id} href={`/bai-viet/${oneItem?.id}`}>
                 <a className="grid__item">
                   <img src={oneItem?.image} alt="" />
                   <div className="grid__item-text">

@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import Modal from "react-modal";
 
-VideoItem.propTypes = {};
+VideoItem.propTypes = {
+  data: PropTypes.object,
+};
+
+VideoItem.defaultProps = {
+  data: {},
+};
 
 const customStyles = {
   content: {
@@ -17,6 +23,7 @@ const customStyles = {
 };
 
 function VideoItem({ data }) {
+  console.log(data);
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {

@@ -49,7 +49,6 @@
               left: 50%;
               transform: translateX(-50%);
               bottom: 0;
-              // animation: example 0.5s ease-in;
             }
             &:hover {
               color: #ff9900 !important;
@@ -93,7 +92,7 @@
         }
         .btn__use {
           font-size: 16px;
-          padding: 12px 24px;
+          padding: 12px 24px 13px 24px;
           font-weight: 500;
           background-color: #ff9900;
           color: #170a4b;

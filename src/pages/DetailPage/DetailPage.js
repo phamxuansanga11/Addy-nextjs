@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
@@ -26,12 +26,13 @@ function SearchDetailPost(props) {
       setLoading(true);
       const resPostDetail = await categoryApi.get(category, id);
       setPostDetail(resPostDetail?.data);
+      console.log(resPostDetail?.data);
       setLoading(false);
     };
     if (id) {
       fetchPostDetail(urlParams, id);
     }
-  }, [urlParams, id]);
+  }, []);
 
   return (
     <>

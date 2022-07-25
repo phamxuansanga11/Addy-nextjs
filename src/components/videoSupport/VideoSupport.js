@@ -16,7 +16,7 @@ function VideoSupport(props) {
     date: "28/09/2021",
     view: "210 Lượt xem",
     image: "../../../img/video-1.jpg",
-    srcVideo: "https://www.youtube.com/embed/PVjiKRfKpPI?autoplay=1",
+    srcVideo: "https://www.youtube.com/embed/PVjiKRfKpPI",
     arrData: [
       {
         id: 2,
@@ -24,7 +24,7 @@ function VideoSupport(props) {
         date: "28/09/2021",
         view: "210 Lượt xem",
         image: "../../../img/video-2.jpg",
-        srcVideo: "https://www.youtube.com/embed/dBEVO_DGiFE?autoplay=1",
+        srcVideo: "https://www.youtube.com/embed/dBEVO_DGiFE",
       },
       {
         id: 3,
@@ -32,7 +32,7 @@ function VideoSupport(props) {
         date: "28/09/2021",
         view: "210 Lượt xem",
         image: "../../../img/video-3.jpg",
-        srcVideo: "https://www.youtube.com/embed/E9Gtl8mOsVc?autoplay=1",
+        srcVideo: "https://www.youtube.com/embed/E9Gtl8mOsVc",
       },
       {
         id: 4,
@@ -40,7 +40,7 @@ function VideoSupport(props) {
         date: "28/09/2021",
         view: "210 Lượt xem",
         image: "../../../img/video-4.jpg",
-        srcVideo: "https://www.youtube.com/embed/KKc_RMln5UY?autoplay=1",
+        srcVideo: "https://www.youtube.com/embed/KKc_RMln5UY",
       },
     ],
   };

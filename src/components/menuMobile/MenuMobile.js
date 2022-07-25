@@ -9,6 +9,7 @@ MenuMobile.propTypes = {};
 function MenuMobile({ iconRef, handleCloseMenu, handleClickLienHe }) {
   const router = useRouter();
   const location = router.pathname;
+  const id = location.slice(6);
 
   const handleCloseMenuChild = () => {
     console.log("close menu..");
@@ -53,7 +54,7 @@ function MenuMobile({ iconRef, handleCloseMenu, handleClickLienHe }) {
           <li
             className={classNames({
               "nav__menu-option": true,
-              active: location === "/bai-viet",
+              active: location === "/bai-viet" || location === `/data/${id}`,
             })}
           >
             <Link href="/bai-viet">

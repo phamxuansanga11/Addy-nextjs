@@ -22,6 +22,8 @@ function NewPost({ dataPostPage }) {
     }
   }, [dataPostPage]);
 
+  //Link bai-viet-tim-kiem-chi-tiet
+
   return (
     <section className="section__newpost">
       <div className="container">
@@ -31,7 +33,7 @@ function NewPost({ dataPostPage }) {
           </div>
           <div className="new__post-grid">
             <div className="grid__left --grid">
-              <Link href="/bai-viet-tim-kiem-chi-tiet">
+              <Link href={`/bai-viet/${oneItem?.id}`}>
                 <a className="grid__item">
                   <img src={oneItem?.image} alt="" />
                   <div className="grid__item-text">
@@ -52,7 +54,7 @@ function NewPost({ dataPostPage }) {
             </div>
             <div className="grid__right --grid">
               {threeItem?.map((data) => (
-                <Link key={data.id} href="/bai-viet-tim-kiem-chi-tiet">
+                <Link key={data.id} href={`/bai-viet/${data?.id}`}>
                   <a className="grid__item">
                     <img src={data?.image} alt="" />
                     <div className="grid__item-text">

@@ -5,9 +5,9 @@ const categoryApi = {
     const url = "/data";
     return axiosClient.get(url, { params: params });
   },
-  get(id) {
-    const url = `/contect-covid${id}`;
-    return axiosClient.get(url);
+  get(category, id, params) {
+    const url = `/${category}/${id}`;
+    return axiosClient.get(url, params);
   },
   add(data) {
     const url = "/contect-covid";

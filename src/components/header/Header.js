@@ -22,6 +22,8 @@ function Header() {
   const router = useRouter();
   const location = router.pathname;
 
+  const id = location.slice(6);
+
   const handleClickLienHe = async () => {
     handleCloseMenu();
     // router.push("/contact");
@@ -71,7 +73,8 @@ function Header() {
                       "": true,
                       active:
                         location === "/bai-viet" ||
-                        location === "/bai-viet-tim-kiem-chi-tiet",
+                        location === "/bai-viet-tim-kiem-chi-tiet" ||
+                        location === `/data/${id}`,
                     })}
                   >
                     Bài viết

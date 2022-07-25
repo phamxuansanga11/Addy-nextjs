@@ -1,62 +1,79 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import PropTypes from "prop-types";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import SiderBarRight from "../../components/hightlightsCare/sideBarRight/SideBarRight";
+import categoryApi from "../../../pages/api/categoryApi";
+import Loading from "../../components/loading/Loading";
 
-SearchDetailPost.propTypes = {};
+import { useRouter } from "next/router";
 
 function SearchDetailPost(props) {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const urlParams = router.pathname.slice(1, 9);
+
+  console.log(urlParams);
+  console.log(id);
+
+  //State data từ call API
+  const [postDetail, setPostDetail] = useState();
+
+  //State Loading
+  const [loading, setLoading] = useState(false);
+
+  //call API
+  useEffect(() => {
+    const fetchPostDetail = async (category, id) => {
+      setLoading(true);
+      const resPostDetail = await categoryApi.get(category, id);
+      setPostDetail(resPostDetail.data);
+      setLoading(false);
+    };
+    if (id) {
+      fetchPostDetail(urlParams, id);
+    }
+  }, [urlParams, id]);
+
   return (
     <>
+      {loading && <Loading />}
       <Header />
       <section className="section__search-detail-post">
         <div className="container">
           <div className="btn__backtodocument">
             <Link href="/bai-viet">
-              <a className="btn__back">Tài liệu</a>
+              <a className="btn__back">{`< Trở về bài viết`}</a>
             </Link>
-            <span> {`>`} </span>
-            <Link href="/bai-viet">
+            {/* <span> {`>`} </span> */}
+            {/* <Link href="/bai-viet">
               <a className="btn__back">Kết quả tìm kiếm</a>
-            </Link>
+            </Link> */}
           </div>
           <div className="search__detail-post__grid">
             <div className="search__detail-post__grid-left">
               <div className="item__detail">
-                <h1 className="title">
-                  7 phương pháp nâng cao hiệu quả công việc mà bạn cần biết
-                </h1>
+                <h1 className="title">{postDetail?.title}</h1>
                 <div className="date-and-view">
                   <div className="date --icon">
                     <i>
                       <img src="../../../img/ic-block.svg" alt="" />
                     </i>
-                    <span>28/09/2021</span>
+                    <span>{postDetail?.date}</span>
                   </div>
                   <div className="view --icon">
                     <i>
                       <img src="../../../img/ic-eye.svg" alt="" />
                     </i>
-                    <span>200 lượt xem</span>
+                    <span>{postDetail?.view} lượt xem</span>
                   </div>
                 </div>
                 <div className="params__content">
-                  <p>
-                    Đánh giá hiệu quả công việc là một trong những nhiệm vụ quan
-                    trọng của nhà quản lý nhằm mục đích kiểm tra hiệu suất làm
-                    việc của nhân viên để đảm bảo có một kết quả chung tốt nhất.
-                    Vậy thì hiệu quả công việc là gì? Phương pháp nào doanh
-                    nghiệp nên áp dụng để đạt hiệu quả tốt nhất? Mọi câu trả lời
-                    sẽ được 1Office hé lộ trong bài viết này.
-                  </p>
+                  <p>{postDetail?.text}</p>
                 </div>
                 <div className="img__content">
-                  <img
-                    src="../../../img/detail-blog-1.jpg"
-                    alt="image detail"
-                  />
+                  <img src={postDetail?.image} alt="image detail" />
                   <p className="caption__img">
                     Các phương pháp nâng cao hiệu quả công việc mà bạn cần biết
                   </p>

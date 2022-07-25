@@ -9,6 +9,7 @@ import Loading from "../../components/loading/Loading";
 
 function PostPage(props) {
   const [dataPostPage, setDataPostPage] = useState(null);
+  const [fourItem, setFourItem] = useState();
 
   const [loading, setLoading] = useState(false);
 
@@ -16,8 +17,9 @@ function PostPage(props) {
     const fetchPosts = async () => {
       setLoading(true);
       const res = await categoryApi.getAll();
+      setFourItem(res?.data?.slice(0, 4));
+      setDataPostPage(res?.data.slice(4));
       setLoading(false);
-      setDataPostPage(res?.data);
     };
     fetchPosts();
   }, []);
@@ -31,7 +33,7 @@ function PostPage(props) {
       {loading && <Loading />}
       <Header />
       <Search />
-      <NewPost dataPostPage={dataPostPage} />
+      <NewPost dataPostPage={fourItem} />
       <HightlightsCare dataPostPage={dataPostPage} />
       <Footer />
     </>

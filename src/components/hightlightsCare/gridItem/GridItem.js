@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 GridItem.propTypes = {
   data: PropTypes.object,
@@ -13,7 +14,7 @@ GridItem.defaultProps = {
 function GridItem({ data }) {
   return (
     <div className="item__posts">
-      <Link href="/bai-viet-tim-kiem-chi-tiet">
+      <Link href={`/bai-viet/${data.id}`}>
         <a>
           <img src={data.image} alt="anh bai viet" />
         </a>

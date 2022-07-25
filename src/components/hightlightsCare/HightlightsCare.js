@@ -14,14 +14,10 @@ HightlightsCare.defaultProps = {
   dataPostPage: [],
 };
 
-{
-  /* <img src="../../../img/logo.png" alt="len" /> */
-}
-
 function HightlightsCare({ dataPostPage }) {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(10);
+  const [postsPerPage, setPostsPerPage] = useState(4);
 
   const [params, setParams] = useState("State Params...");
 
@@ -33,7 +29,7 @@ function HightlightsCare({ dataPostPage }) {
     }
   }, [dataPostPage]);
 
-  console.log(posts);
+  // console.log(posts);
 
   // Get current posts
   const indexOfLastPost = useMemo(

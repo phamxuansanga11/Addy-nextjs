@@ -32,7 +32,7 @@ function NewPost({ dataPostPage }) {
           </div>
           <div className="new__post-grid">
             <div className="grid__left --grid">
-              <Link key={oneItem?.id} href={`/bai-viet/${oneItem?.id}`}>
+              <Link key={oneItem?._id} href={`/bai-viet/${oneItem?._id}`}>
                 <a className="grid__item">
                   <img src={oneItem?.image} alt="" />
                   <div className="grid__item-text">

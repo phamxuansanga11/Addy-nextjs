@@ -5,10 +5,6 @@ import Link from "next/link";
 
 TabContent.propTypes = {};
 
-{
-  /* <img src="../../../img/logo.png" alt="len" /> */
-}
-
 function TabContent(props) {
   const [currentTab, setCurrentTab] = useState("1");
   const tabs = [
@@ -46,7 +42,7 @@ function TabContent(props) {
     <section className="section__tabcontent">
       <div className="container">
         <div className="backtopageprev">
-          <Link href="/document">
+          <Link href="/tai-lieu">
             <a className="active">Tài liệu</a>
           </Link>
           <span>{`>`}</span>
@@ -87,15 +83,6 @@ function TabContent(props) {
                 </div>
               ))}
             </div>
-            {/* <p className="params">
-              ZALO là nền tảng mạng xã hội có nhiều người dùng nhất Việt Nam, do
-              đó ADDY CRM mang đến tính năng quản trị ZALO OA giúp doanh nghiệp
-              tiếp cận được với lượng lớn khách hàng tiềm năng này. Với ADDY,
-              doanh nghiệp dễ dàng quản trị đồng thời nhiều tài khoản ZALO và
-              khai thác tối đa các dịch vụ mà ZALO cung cấp. Ngoài ra, ADDY cũng
-              hỗ trợ quảng cáo theo từng khu vực của tệp khách hàng tiềm năng mà
-              doanh nghiệp mong muốn.
-            </p> */}
           </div>
         </div>
       </div>

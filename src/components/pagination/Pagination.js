@@ -27,7 +27,10 @@ function Pagination({
   active,
   handleSetDownCurrentPage,
   handleSetUpCurrentPage,
+  currentPage,
 }) {
+  // console.log(currentPage);
+
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
@@ -46,18 +49,24 @@ function Pagination({
         >
           <span>←</span>
         </li>
-        {pageNumbers.map((i) => (
-          <li
-            key={i}
-            className={classNames({
-              "pagination__list-option": true,
-              active: i === active,
-            })}
-            onClick={() => paginate(i)}
-          >
-            {i}
-          </li>
-        ))}
+        {pageNumbers.map(
+          (i, index) =>
+            index > currentPage - 3 &&
+            index < currentPage + 2 && (
+              <button
+                key={i}
+                disabled={index < currentPage + 1 ? false : true}
+                className={classNames({
+                  "pagination__list-option": true,
+                  active: i === active,
+                  unhover: index < currentPage + 1 ? false : true,
+                })}
+                onClick={() => paginate(i)}
+              >
+                {i < currentPage + 2 ? i : "..."}
+              </button>
+            )
+        )}
         <li
           className={classNames({
             "--btn__controll --next__btn": true,

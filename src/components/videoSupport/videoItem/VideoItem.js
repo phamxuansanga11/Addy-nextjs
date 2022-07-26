@@ -23,7 +23,6 @@ const customStyles = {
 };
 
 function VideoItem({ data }) {
-  console.log(data);
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {

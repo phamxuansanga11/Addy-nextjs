@@ -5,9 +5,6 @@ import VideoItem from "./videoItem/VideoItem";
 VideoSupport.propTypes = {};
 
 // Modal.setAppElement(VideoSupport);
-{
-  /* <img src="../../../img/logo.png" alt="len" /> */
-}
 
 function VideoSupport(props) {
   const data = [

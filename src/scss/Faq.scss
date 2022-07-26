@@ -18,15 +18,20 @@
     .faq__content {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      gap: 30px;
       .faq__content-item {
-        margin-bottom: 30px;
-        padding: 0 15px;
+        // margin-bottom: 30px;
+        // padding: 0 15px;
         .title__item {
           display: flex;
-          align-items: center;
+          // align-items: center;
           margin-bottom: 10px;
           i {
-            display: flex;
+            // display: flex;
+            > img {
+              width: 100%;
+              min-width: 30px;
+            }
           }
           h5 {
             font-size: 18px;

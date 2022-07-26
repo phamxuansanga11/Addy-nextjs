@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <title>Addy CMS</title>
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=G-RD2F6RXDEV`}

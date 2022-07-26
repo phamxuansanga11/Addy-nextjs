@@ -10,43 +10,48 @@ import Loading from "../../components/loading/Loading";
 function PostPage(props) {
   const [dataPostPage, setDataPostPage] = useState(null);
   const [fourItem, setFourItem] = useState();
+  const [extantItem, setExtantItem] = useState();
 
   const [loading, setLoading] = useState(false);
 
-  const newPost = useMemo(() => {
-    if (dataPostPage) {
-      return fourItem;
-    }
-  }, [dataPostPage]);
+  // const newPost = useMemo(() => {
+  //   if (dataPostPage) {
+  //     return fourItem;
+  //   }
+  // }, [dataPostPage]);
 
-  const extant = useMemo(() => {
-    if (dataPostPage) {
-      return dataPostPage;
-    }
-  }, [dataPostPage]);
+  // const extant = useMemo(() => {
+  //   if (dataPostPage) {
+  //     return dataPostPage;
+  //   }
+  // }, [dataPostPage]);
 
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
       const res = await categoryApi.getAll();
+      setDataPostPage(res?.data);
+
       setFourItem(res?.data?.slice(0, 4));
-      setDataPostPage(res?.data?.slice(4));
+      setExtantItem(res?.data?.slice(4));
+
       setLoading(false);
     };
     fetchPosts();
   }, []);
 
+  // console.log("data", dataPostPage);
   //log so lan` re-render
-  const rederRef = useRef(1);
-  console.log("re-render....", rederRef.current++);
+  // const rederRef = useRef(1);
+  // console.log("re-render....", rederRef.current++);
 
   return (
     <>
       {loading && <Loading />}
       <Header />
       <Search />
-      <NewPost dataPostPage={newPost} />
-      <HightlightsCare dataPostPage={extant} />
+      <NewPost dataPostPage={fourItem} />
+      <HightlightsCare dataPostPage={extantItem} />
       <Footer />
     </>
   );

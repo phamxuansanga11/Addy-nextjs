@@ -12,7 +12,10 @@ function SearchDetailPost(props) {
   const router = useRouter();
   const { id } = router.query;
 
-  const urlParams = router.pathname.slice(1, 9);
+  // const urlParams = router.pathname.slice(1, 9);
+  const urlParams = router.asPath.slice(1, 9);
+  // console.log("url ne`:", urlParams);
+  // console.log("router", router);
 
   //State data từ call API
   const [postDetail, setPostDetail] = useState();
@@ -26,13 +29,13 @@ function SearchDetailPost(props) {
       setLoading(true);
       const resPostDetail = await categoryApi.get(category, id);
       setPostDetail(resPostDetail?.data);
-      console.log(resPostDetail?.data);
+      // console.log(resPostDetail?.data);
       setLoading(false);
     };
     if (id) {
       fetchPostDetail(urlParams, id);
     }
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -45,10 +48,6 @@ function SearchDetailPost(props) {
             <Link href="/bai-viet">
               <a className="btn__back">{`< Trở về bài viết`}</a>
             </Link>
-            {/* <span> {`>`} </span> */}
-            {/* <Link href="/bai-viet">
-              <a className="btn__back">Kết quả tìm kiếm</a>
-            </Link> */}
           </div>
           <div className="search__detail-post__grid">
             <div className="search__detail-post__grid-left">

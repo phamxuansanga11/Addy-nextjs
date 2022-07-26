@@ -31,6 +31,8 @@ function HightlightsCare({ dataPostPage }) {
 
   // console.log(posts);
 
+  // console.log(currentPage);
+
   // Get current posts
   const indexOfLastPost = useMemo(
     () => currentPage * postsPerPage,
@@ -98,6 +100,7 @@ function HightlightsCare({ dataPostPage }) {
                 active={active}
                 handleSetDownCurrentPage={handleSetDownCurrentPage}
                 handleSetUpCurrentPage={handleSetUpCurrentPage}
+                currentPage={currentPage}
               />
             </div>
             <div className="wrapper__grid-right">

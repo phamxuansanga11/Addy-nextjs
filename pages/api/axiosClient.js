@@ -3,6 +3,7 @@ import axios from "axios";
 const axiosClient = axios.create({
   baseURL: "https://62d4e0b9cd960e45d45cfd64.mockapi.io/api/",
   // baseURL: "https://jsonplaceholder.typicode.com/",
+  // baseURL: "http://localhost:4001",
   headers: {
     "Content-Type": "application/json",
   },

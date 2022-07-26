@@ -1,6 +1,7 @@
 import "../styles/globals.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.css";
+import Head from "next/head";
 
 import { useEffect } from "react";
 import { useRouter } from "next/router";
@@ -25,7 +26,14 @@ function MyApp({ Component, pageProps }) {
     };
   }, [router.events]);
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Head>
+        <title>Addy CMS</title>
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp;

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import SiderBarRight from "../../components/hightlightsCare/sideBarRight/SideBarRight";
-import categoryApi from "../../../pages/api/categoryApi";
+import postsApi from "../../../pages/api/postsApi";
 import Loading from "../../components/loading/Loading";
 
 import { useRouter } from "next/router";
@@ -27,7 +27,7 @@ function SearchDetailPost(props) {
   useEffect(() => {
     const fetchPostDetail = async (category, id) => {
       setLoading(true);
-      const resPostDetail = await categoryApi.get(category, id);
+      const resPostDetail = await postsApi.get(category, id);
       setPostDetail(resPostDetail?.data);
       // console.log(resPostDetail?.data);
       setLoading(false);

@@ -4,11 +4,11 @@ import NewPost from "../../components/newPosts/NewPost";
 import HightlightsCare from "../../components/hightlightsCare/HightlightsCare";
 import Footer from "../../components/footer/Footer";
 import Search from "../../components/search/Search";
-import categoryApi from "../../../pages/api/categoryApi";
+import postsApi from "../../../pages/api/postsApi";
 import Loading from "../../components/loading/Loading";
 
 function PostPage(props) {
-  const [dataPostPage, setDataPostPage] = useState(null);
+  // const [dataPostPage, setDataPostPage] = useState(null);
   const [fourItem, setFourItem] = useState();
   const [extantItem, setExtantItem] = useState();
 
@@ -29,8 +29,8 @@ function PostPage(props) {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await categoryApi.getAll();
-      setDataPostPage(res?.data);
+      const res = await postsApi.getAll();
+      // setDataPostPage(res?.data);
 
       setFourItem(res?.data?.slice(0, 4));
       setExtantItem(res?.data?.slice(4));

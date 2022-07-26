@@ -29,8 +29,6 @@ function HightlightsCare({ dataPostPage }) {
     }
   }, [dataPostPage]);
 
-  // console.log(posts);
-
   // console.log(currentPage);
 
   // Get current posts

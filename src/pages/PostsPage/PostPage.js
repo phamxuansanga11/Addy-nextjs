@@ -29,17 +29,18 @@ function PostPage(props) {
   //List category
   const [category, setCategory] = useState();
 
+  const [nameCategory, setNameCategory] = useState();
+
   const [idCategoryList, setIdCategoryList] = useState();
 
   //func hightlight
-  const handleClickCategoryList = (id) => {
+  const handleClickCategoryList = (id, title) => {
     if (id) {
       setIdCategoryList(id);
       setPage(1);
       setActive(1);
-      console.log(page);
+      setNameCategory(title);
     }
-    console.log("ham` ong noi...", id);
   };
 
   const handleSetDownCurrentPage = useCallback(() => {
@@ -89,6 +90,7 @@ function PostPage(props) {
       setLoading(true);
       const res = await categoryApi.getAll();
       setCategory(res?.data);
+      setName(res?.data);
       setLoading(false);
     } catch (error) {
       console.log("goi API fetchPost that bai", error);
@@ -126,6 +128,7 @@ function PostPage(props) {
     return moment(dateToFormat).format("DD/MM/YYYY");
   };
 
+  console.log(category);
   //log so lan` re-render
   // const rederRef = useRef(1);
   // console.log("re-render....", rederRef.current++);
@@ -141,7 +144,7 @@ function PostPage(props) {
           <div className="hightlights__care">
             <div className="wrapper__grid">
               <div className="wrapper__grid-left">
-                <h2>Tin nổi bật</h2>
+                <h2>{nameCategory ? nameCategory : "Tin nổi bật"}</h2>
                 <div className="hightlights__care-content">
                   {remakeablePost?.map((data) => (
                     <GridItem

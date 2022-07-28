@@ -13,13 +13,6 @@ function SearchDetailPost(props) {
   const router = useRouter();
   const { id } = router.query;
 
-  // console.log("url ID", id);
-
-  // const urlParams = router.pathname.slice(1, 9);
-  // const urlParams = router.asPath.slice(1, 9);
-  // console.log("url ne`:", urlParams);
-  // console.log("router", router);
-
   //State data từ call API
   const [postDetail, setPostDetail] = useState();
 
@@ -32,16 +25,12 @@ function SearchDetailPost(props) {
       setLoading(true);
       const resPostDetail = await postDetailApi.get(id);
       setPostDetail(resPostDetail?.data);
-      console.log(resPostDetail?.data);
-      // console.log(resPostDetail?.data);
       setLoading(false);
     };
     if (id) {
       fetchPostDetail(id);
     }
   }, [id]);
-
-  // console.log("post detail ne`", postDetail);
 
   return (
     <>

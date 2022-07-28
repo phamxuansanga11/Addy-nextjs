@@ -68,6 +68,10 @@
       font-size: 16px;
       font-weight: 500;
       min-height: 41px;
+      &.active {
+        color: #ff9900 !important;
+        border-bottom: 1px solid #ccc;
+      }
       &:hover {
         border-bottom: 1px solid #ccc;
       }

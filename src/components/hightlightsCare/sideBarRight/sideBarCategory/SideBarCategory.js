@@ -13,6 +13,8 @@ SideBarCategory.defaultProps = {
 };
 
 function SideBarCategory({ category, handleClickCategoryList }) {
+  const [idCategory, setIdCategory] = useState("62e0dd8fcce02227343cf3eb");
+
   return (
     <>
       <h2 className="title">Danh mục</h2>
@@ -21,8 +23,13 @@ function SideBarCategory({ category, handleClickCategoryList }) {
           <CateGoryItem
             key={item._id}
             title={item.name}
-            handleClickCategoryList={handleClickCategoryList}
+            handleClickCategoryList={(id, title) => {
+              handleClickCategoryList(id, title);
+              setIdCategory(id);
+            }}
             id={item._id}
+            name={name}
+            isActive={idCategory === item?._id ? true : false}
           />
         ))}
       </div>

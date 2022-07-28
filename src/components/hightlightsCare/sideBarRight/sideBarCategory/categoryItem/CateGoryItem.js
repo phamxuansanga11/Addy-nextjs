@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
 CateGoryItem.propTypes = {
   title: PropTypes.string,
@@ -11,12 +12,18 @@ CateGoryItem.defaultProps = {
   handleClickCategoryList: null,
 };
 
-function CateGoryItem({ title, handleClickCategoryList, id }) {
+function CateGoryItem({ title, handleClickCategoryList, id, isActive }) {
   const handleClickCategory = () => {
-    handleClickCategoryList(id);
+    handleClickCategoryList(id, title);
   };
   return (
-    <a className="category__detail" onClick={() => handleClickCategory()}>
+    <a
+      className={classNames({
+        category__detail: true,
+        active: isActive,
+      })}
+      onClick={() => handleClickCategory()}
+    >
       {title}
     </a>
   );

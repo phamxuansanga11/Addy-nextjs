@@ -28,7 +28,6 @@ function SideBarCategory({ category, handleClickCategoryList }) {
               setIdCategory(id);
             }}
             id={item._id}
-            name={name}
             isActive={idCategory === item?._id ? true : false}
           />
         ))}

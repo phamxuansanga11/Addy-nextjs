@@ -97,8 +97,6 @@ function PostPage(props) {
     }
   };
 
-  // console.log("remakeablePost", remakeablePost);
-
   const fetchPostByCategory = async () => {
     try {
       const resCategory = await categoryApi.getPostsCategory(
@@ -128,7 +126,6 @@ function PostPage(props) {
     return moment(dateToFormat).format("DD/MM/YYYY");
   };
 
-  console.log(category);
   //log so lan` re-render
   // const rederRef = useRef(1);
   // console.log("re-render....", rederRef.current++);

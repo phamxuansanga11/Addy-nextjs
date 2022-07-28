@@ -3,25 +3,25 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 
 NewPost.propTypes = {
-  dataPostPage: PropTypes.array,
+  newPosts: PropTypes.array,
+  momentFunc: PropTypes.func,
 };
 
 NewPost.defaultProps = {
-  dataPostPage: [],
+  newPosts: [],
+  momentFunc: null,
 };
 
-function NewPost({ dataPostPage }) {
+function NewPost({ newPosts, momentFunc }) {
   const [threeItem, setThreeItem] = useState();
   const [oneItem, setOneItem] = useState();
 
   useEffect(() => {
-    if (dataPostPage?.length > 0) {
-      setOneItem(dataPostPage[0]);
-      setThreeItem(dataPostPage.slice(1));
+    if (newPosts?.length > 0) {
+      setOneItem(newPosts[0]);
+      setThreeItem(newPosts.slice(1));
     }
-  }, [dataPostPage]);
-
-  //Link bai-viet-tim-kiem-chi-tiet
+  }, [newPosts]);
 
   return (
     <section className="section__newpost">
@@ -34,7 +34,7 @@ function NewPost({ dataPostPage }) {
             <div className="grid__left --grid">
               <Link key={oneItem?._id} href={`/bai-viet/${oneItem?._id}`}>
                 <a className="grid__item">
-                  <img src={oneItem?.image} alt="" />
+                  <img src={oneItem?.urlImage} alt="" />
                   <div className="grid__item-text">
                     <h3 className="title">{oneItem?.title}</h3>
                     <div className="time">
@@ -45,7 +45,7 @@ function NewPost({ dataPostPage }) {
                         <span>2</span>
                       </div>
                       <span className="dot">-</span>
-                      <span> {oneItem?.date} </span>
+                      <span> {momentFunc(oneItem?.created_at)} </span>
                     </div>
                   </div>
                 </a>
@@ -53,9 +53,9 @@ function NewPost({ dataPostPage }) {
             </div>
             <div className="grid__right --grid">
               {threeItem?.map((data) => (
-                <Link key={data.id} href={`/bai-viet/${data?.id}`}>
+                <Link key={data._id} href={`/bai-viet/${data?._id}`}>
                   <a className="grid__item">
-                    <img src={data?.image} alt="" />
+                    <img src={data?.urlImage} alt="" />
                     <div className="grid__item-text">
                       <h3 className="title">{data?.title}</h3>
                       <div className="time">
@@ -66,7 +66,7 @@ function NewPost({ dataPostPage }) {
                           <span>2</span>
                         </div>
                         <span className="dot"> - </span>
-                        <span> {data?.date} </span>
+                        <span>{momentFunc(data?.created_at)}</span>
                       </div>
                     </div>
                   </a>

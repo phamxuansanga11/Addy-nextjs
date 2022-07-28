@@ -2,23 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 
 CateGoryItem.propTypes = {
-  handleClickCategoryP: PropTypes.func,
   title: PropTypes.string,
-  params: PropTypes.string,
-  link: PropTypes.string,
+  handleClickCategoryList: PropTypes.func,
 };
 
 CateGoryItem.defaultProps = {
-  handleClickCategoryP: null,
   title: "",
-  params: "",
-  link: "",
+  handleClickCategoryList: null,
 };
 
-function CateGoryItem({ handleClickCategoryP, title, params, link }) {
+function CateGoryItem({ title, handleClickCategoryList, id }) {
   const handleClickCategory = () => {
-    console.log("click category...", params);
-    handleClickCategoryP(link);
+    handleClickCategoryList(id);
   };
   return (
     <a className="category__detail" onClick={() => handleClickCategory()}>

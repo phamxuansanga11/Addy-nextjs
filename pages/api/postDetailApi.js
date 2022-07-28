@@ -1,13 +1,13 @@
 import axiosClient from "./axiosClient";
 
-const postsApi = {
-  getAll(params) {
-    const url = "/post";
-    return axiosClient.get(url, { params: params });
+const postDetailApi = {
+  getAll() {
+    const url = "/category";
+    return axiosClient.get(url);
   },
-  get(category, id, params) {
-    const url = `/${category}/${id}`;
-    return axiosClient.get(url, params);
+  get(id) {
+    const url = `/post/${id}`;
+    return axiosClient.get(url);
   },
   add(data) {
     const url = "/contect-covid";
@@ -24,4 +24,4 @@ const postsApi = {
   },
 };
 
-export default postsApi;
+export default postDetailApi;

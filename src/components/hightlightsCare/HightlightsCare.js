@@ -4,20 +4,34 @@ import PropTypes from "prop-types";
 import GridItem from "./gridItem/GridItem";
 import SideBarRight from "./sideBarRight/SideBarRight";
 
-import Pagination from "../pagination/Pagination";
+// import Pagination from "../pagination/Pagination";
 
 HightlightsCare.propTypes = {
   dataPostPage: PropTypes.array,
+  momentFunc: PropTypes.func,
+  page: PropTypes.number,
+  pageSize: PropTypes.number,
 };
 
 HightlightsCare.defaultProps = {
   dataPostPage: [],
+  momentFunc: null,
+  page: 1,
+  pageSize: 5,
 };
 
-function HightlightsCare({ dataPostPage }) {
+function HightlightsCare({
+  dataPostPage,
+  momentFunc,
+  page,
+  pageSize,
+  totalPages,
+}) {
+  console.log("page:", page, "pageSize:", pageSize);
+  // console.log("hehe boy:", dataPostPage);
   const [posts, setPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(4);
+  const [currentPage, setCurrentPage] = useState(page);
+  const [postsPerPage, setPostsPerPage] = useState(pageSize);
 
   const [params, setParams] = useState("State Params...");
 
@@ -88,25 +102,18 @@ function HightlightsCare({ dataPostPage }) {
               <h2>Tin nổi bật</h2>
               <div className="hightlights__care-content">
                 {currentPosts?.map((data) => (
-                  <GridItem key={data.id} data={data} />
+                  <GridItem
+                    key={data._id}
+                    data={data}
+                    momentFunc={momentFunc}
+                  />
                 ))}
               </div>
-              <Pagination
-                postsPerPage={postsPerPage}
-                totalPosts={posts?.length}
-                paginate={paginate}
-                active={active}
-                handleSetDownCurrentPage={handleSetDownCurrentPage}
-                handleSetUpCurrentPage={handleSetUpCurrentPage}
-                currentPage={currentPage}
-              />
             </div>
-            <div className="wrapper__grid-right">
-              <SideBarRight
-                params={params}
-                handleClickCategoryP={handleClickCategoryP}
-              />
-            </div>
+            <SideBarRight
+              params={params}
+              handleClickCategoryP={handleClickCategoryP}
+            />
           </div>
         </div>
       </div>

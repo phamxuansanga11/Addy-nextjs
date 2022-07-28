@@ -5,23 +5,24 @@ import { useRouter } from "next/router";
 
 GridItem.propTypes = {
   data: PropTypes.object,
+  momentFunc: PropTypes.func,
 };
 
 GridItem.defaultProps = {
   data: {},
+  momentFunc: null,
 };
 
-function GridItem({ data }) {
+function GridItem({ data, momentFunc }) {
   return (
     <div className="item__posts">
-      <Link href={`/bai-viet/${data.id}`}>
+      <Link href={`/bai-viet/${data._id}`}>
         <a>
-          <img src={data.image} alt="anh bai viet" />
+          <img src={data.urlImage} alt="anh bai viet" />
         </a>
       </Link>
       <div className="item__text">
         <h4>{data.title}</h4>
-        <p>{data.body}</p>
         <div className="hagtag --hagtag">
           <i>
             <img src="../../../img/ic-tag.svg" alt="" />
@@ -33,7 +34,7 @@ function GridItem({ data }) {
             <i>
               <img src="../../../img/ic-block.svg" alt="" />
             </i>
-            <span className="day">{data.date}</span>
+            <span className="day">{momentFunc(data?.created_at)}</span>
           </div>
           <div className="time --hagtag">
             <i>

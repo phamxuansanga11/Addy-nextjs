@@ -1,13 +1,15 @@
 import axiosClient from "./axiosClient";
 
-const postsApi = {
-  getAll(params) {
-    const url = "/post";
-    return axiosClient.get(url, { params: params });
+const categoryApi = {
+  getAll() {
+    const url = "/category";
+    return axiosClient.get(url);
   },
-  get(category, id, params) {
-    const url = `/${category}/${id}`;
-    return axiosClient.get(url, params);
+  getPostsCategory(id, params) {
+    // const url = `/find-by-categoryId/${id}`;
+    const url = `/post/find-by-categoryId/${id}`;
+
+    return axiosClient.get(url, { params: params });
   },
   add(data) {
     const url = "/contect-covid";
@@ -24,4 +26,4 @@ const postsApi = {
   },
 };
 
-export default postsApi;
+export default categoryApi;

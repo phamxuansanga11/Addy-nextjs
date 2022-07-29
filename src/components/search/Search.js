@@ -3,18 +3,25 @@ import PropTypes from "prop-types";
 
 import * as ga from "../../../libs/ga";
 
-Search.propTypes = {};
+Search.propTypes = {
+  handleOnSubmit: PropTypes.func,
+};
 
-function Search(props) {
+Search.defaultProps = {
+  handleOnSubmit: null,
+};
+
+function Search({ handleOnSubmit }) {
   const [valueSearch, setValueSearch] = useState("");
 
   const setTimeOutRef = useRef(null);
 
   // const [query, setQuery] = useState("");
 
-  const handleSubmit = useCallback((newFilter) => {
-    console.log("newFilter:", newFilter);
-  }, []);
+  const handleSubmit = (newValueInputr) => {
+    console.log("valueInput:", newValueInputr);
+    handleOnSubmit();
+  };
 
   const handleOnChange = (e) => {
     let valueInput = e.target.value;
@@ -58,7 +65,6 @@ function Search(props) {
               placeholder="Hướng dẫn sử dụng phần mềm..."
               value={valueSearch}
               onChange={handleOnChange}
-              // onChange={(event) => setQuery(event.target.value)}
               onSubmit={() => search()}
             />
           </div>

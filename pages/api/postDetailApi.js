@@ -5,8 +5,8 @@ const postDetailApi = {
     const url = "/category";
     return axiosClient.get(url);
   },
-  get(id) {
-    const url = `/post/${id}`;
+  get(slugString) {
+    const url = `/post/detail/${slugString}`;
     return axiosClient.get(url);
   },
   add(data) {

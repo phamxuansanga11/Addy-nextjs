@@ -18,6 +18,7 @@ function PostPage(props) {
   const [loading, setLoading] = useState(false);
   const [pageNewPosts, setPageNewPosts] = useState(1);
 
+  //Pagination
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(3);
   const [totalPages, setTotalPage] = useState();
@@ -40,6 +41,7 @@ function PostPage(props) {
       setPage(1);
       setActive(1);
       setNameCategory(title);
+      console.log("name", title);
     }
   };
 
@@ -90,7 +92,6 @@ function PostPage(props) {
       setLoading(true);
       const res = await categoryApi.getAll();
       setCategory(res?.data);
-      setName(res?.data);
       setLoading(false);
     } catch (error) {
       console.log("goi API fetchPost that bai", error);
@@ -100,7 +101,7 @@ function PostPage(props) {
   const fetchPostByCategory = async () => {
     try {
       const resCategory = await categoryApi.getPostsCategory(
-        idCategoryList || "62e0dd8fcce02227343cf3eb",
+        idCategoryList || "Tin nổi bật",
         {
           pageIndex: `${page}`,
           pageSize: `${pageSize}`,
@@ -121,9 +122,14 @@ function PostPage(props) {
   useEffect(() => {
     fetchPostByCategory();
   }, [page, idCategoryList]);
+  //, isSearchText
 
   const momentFunc = (dateToFormat) => {
     return moment(dateToFormat).format("DD/MM/YYYY");
+  };
+
+  const handleOnSubmit = () => {
+    console.log("hehe boy");
   };
 
   //log so lan` re-render
@@ -134,7 +140,7 @@ function PostPage(props) {
     <>
       {loading && <Loading />}
       <Header />
-      <Search />
+      <Search handleOnSubmit={handleOnSubmit} />
       <NewPost newPosts={newPosts} momentFunc={momentFunc} />
       <section className="section__hightlights-care">
         <div className="container">

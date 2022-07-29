@@ -8,10 +8,13 @@ import Loading from "../../components/loading/Loading";
 import renderHTML from "react-render-html";
 
 import { useRouter } from "next/router";
+import axios from "axios";
 
 function SearchDetailPost(props) {
   const router = useRouter();
-  const { id } = router.query;
+  const { slugString } = router.query;
+
+  console.log(slugString);
 
   //State data từ call API
   const [postDetail, setPostDetail] = useState();
@@ -19,19 +22,27 @@ function SearchDetailPost(props) {
   //State Loading
   const [loading, setLoading] = useState(false);
 
+  const fetchPostDetail = async (slugString) => {
+    setLoading(true);
+    const resPostDetail = await postDetailApi.get(slugString);
+    // const resPostDetail = await axios.get(
+    //   "http://192.168.100.4:4001/post/detail/bai-viet-1-of-danh-muc-1-1659086822913"
+    // );
+    setPostDetail(resPostDetail.data);
+    console.log("data trong useEffect", resPostDetail);
+    setLoading(false);
+  };
+
   //call API
   useEffect(() => {
-    const fetchPostDetail = async (id) => {
-      setLoading(true);
-      const resPostDetail = await postDetailApi.get(id);
-      setPostDetail(resPostDetail?.data);
-      setLoading(false);
-    };
-    if (id) {
-      fetchPostDetail(id);
+    if (slugString) {
+      fetchPostDetail(slugString);
     }
-  }, [id]);
+  }, [slugString]);
 
+  // console.log("post detail ne`", postDetail);
+
+  console.log("dasdasdasjdvajsvdajv", postDetail);
   return (
     <>
       {loading && <Loading />}
@@ -46,7 +57,9 @@ function SearchDetailPost(props) {
           <div className="search__detail-post__grid">
             <div className="search__detail-post__grid-left">
               <h1>{postDetail?.title}</h1>
-              {postDetail ? renderHTML(postDetail?.ckeditor_data) : ""}
+              {postDetail?.ckeditor_data
+                ? renderHTML(postDetail?.ckeditor_data)
+                : ""}
             </div>
             <div className="wrapper__grid-right">
               <SiderBarRight />

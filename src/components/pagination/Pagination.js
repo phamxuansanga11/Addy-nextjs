@@ -21,19 +21,35 @@ Pagination.defaultProps = {
 };
 
 function Pagination({
-  // postsPerPage,
   totalPages,
   paginate,
+  paginatePageSearch,
   active,
   handleSetDownCurrentPage,
   handleSetUpCurrentPage,
-  // currentPage,
+  handleSetDownCurrentPageSearch,
+  handleSetUpCurrentPageSearch,
 }) {
+  const paginateI = (i) => {
+    paginate(i);
+    paginatePageSearch(i);
+  };
+
   const pageNumbers = [];
 
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
+
+  const handleSetDownCurrentPageChildren = () => {
+    handleSetDownCurrentPage();
+    handleSetDownCurrentPageSearch();
+  };
+
+  const handleSetUpCurrentPageChildren = () => {
+    handleSetUpCurrentPage();
+    handleSetUpCurrentPageSearch();
+  };
 
   return (
     <div className="paginations">
@@ -43,7 +59,7 @@ function Pagination({
             "--btn__controll --prev__btn": true,
             disables: active === 1,
           })}
-          onClick={() => handleSetDownCurrentPage()}
+          onClick={() => handleSetDownCurrentPageChildren()}
         >
           <span>←</span>
         </li>
@@ -59,9 +75,10 @@ function Pagination({
                   active: i === active,
                   unhover: index < active + 1 ? false : true,
                 })}
-                onClick={() => paginate(i)}
+                onClick={() => paginateI(i)}
               >
                 {i < active + 2 ? i : "..."}
+                {/* {i} */}
               </button>
             )
         )}
@@ -70,7 +87,7 @@ function Pagination({
             "--btn__controll --next__btn": true,
             disables: active === totalPages,
           })}
-          onClick={() => handleSetUpCurrentPage()}
+          onClick={() => handleSetUpCurrentPageChildren()}
         >
           <span>→</span>
         </li>

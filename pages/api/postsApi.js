@@ -9,9 +9,9 @@ const postsApi = {
     const url = `/${category}/${id}`;
     return axiosClient.get(url, params);
   },
-  add(data) {
-    const url = "/contect-covid";
-    return axiosClient.post(url, data, {});
+  search(payload) {
+    const url = "/post/search";
+    return axiosClient.post(url, { payload: payload });
   },
 
   update(data) {

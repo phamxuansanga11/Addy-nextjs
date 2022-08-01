@@ -14,7 +14,7 @@ function SearchDetailPost(props) {
   const router = useRouter();
   const { slugString } = router.query;
 
-  console.log(slugString);
+  // console.log(slugString);
 
   //State data từ call API
   const [postDetail, setPostDetail] = useState();
@@ -29,7 +29,7 @@ function SearchDetailPost(props) {
     //   "http://192.168.100.4:4001/post/detail/bai-viet-1-of-danh-muc-1-1659086822913"
     // );
     setPostDetail(resPostDetail.data);
-    console.log("data trong useEffect", resPostDetail);
+    // console.log("data trong useEffect", resPostDetail);
     setLoading(false);
   };
 
@@ -40,9 +40,6 @@ function SearchDetailPost(props) {
     }
   }, [slugString]);
 
-  // console.log("post detail ne`", postDetail);
-
-  console.log("dasdasdasjdvajsvdajv", postDetail);
   return (
     <>
       {loading && <Loading />}

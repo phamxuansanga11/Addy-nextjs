@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 
 import * as ga from "../../../libs/ga";
@@ -18,9 +18,9 @@ function Search({ handleOnSubmit }) {
 
   // const [query, setQuery] = useState("");
 
-  const handleSubmit = (newValueInputr) => {
-    console.log("valueInput:", newValueInputr);
-    handleOnSubmit();
+  const handleSubmit = (newValueInput) => {
+    // console.log("valueInput:", newValueInputr);
+    handleOnSubmit(newValueInput);
   };
 
   const handleOnChange = (e) => {
@@ -53,7 +53,9 @@ function Search({ handleOnSubmit }) {
     <section className="section__search">
       <div className="container">
         <div className="search__content">
-          <h2 className="title">Xin chào, Addy có thể giúp gì được cho bạn?</h2>
+          <h2 className="title">
+            Xin chào, Addy CMS có thể giúp gì được cho bạn?
+          </h2>
           <div className="search__content-input">
             <div className="icon__search">
               <i>
@@ -62,14 +64,14 @@ function Search({ handleOnSubmit }) {
             </div>
             <input
               type="text"
-              placeholder="Hướng dẫn sử dụng phần mềm..."
+              placeholder="Nhập để tìm kiếm bài viết..."
               value={valueSearch}
               onChange={handleOnChange}
               onSubmit={() => search()}
             />
           </div>
           <p className="search__contact">
-            Liên hệ ngay với ADDY để được hỗ trợ miễn phí{" "}
+            Liên hệ với Addy CMS để được hỗ trợ miễn phí{" "}
             <a href="#">1900 1111</a>
           </p>
         </div>

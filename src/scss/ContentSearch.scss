@@ -10,6 +10,13 @@
           color: #ff9900;
         }
       }
+      .btn__backToPosts {
+        margin-top: 10px;
+        color: #ff9900 !important;
+        &:hover {
+          text-decoration: underline !important;
+        }
+      }
     }
     .result__content {
       margin-top: 40px;

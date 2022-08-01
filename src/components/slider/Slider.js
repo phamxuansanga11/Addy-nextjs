@@ -1,11 +1,11 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import { Navigation, Pagination, Controller, Thumbs } from "swiper";
+import { Navigation, Pagination, Controller } from "swiper";
 
 Slider.propTypes = {};
 
@@ -17,7 +17,7 @@ function Slider(props) {
   const swiper1Ref = useRef();
   const swiper2Ref = useRef();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     swiper1Ref.current.controller.control = swiper2Ref.current;
     swiper2Ref.current.controller.control = swiper1Ref.current;
   }, []);

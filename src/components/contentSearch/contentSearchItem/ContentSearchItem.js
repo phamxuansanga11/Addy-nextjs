@@ -4,12 +4,12 @@ import Link from "next/link";
 
 ContentSearchItem.propTypes = {};
 
-function ContentSearchItem({ data }) {
+function ContentSearchItem({ data, momentFunc }) {
   return (
     <div className="result__content-grid__item">
       <Link href="/bai-viet-tim-kiem-chi-tiet">
         <a>
-          <img src={`${data.image}`} alt="" />
+          <img src={`${data.urlImage}`} alt="" />
           <p className="bg__orange">{data.name}</p>
         </a>
       </Link>
@@ -20,7 +20,7 @@ function ContentSearchItem({ data }) {
             <i>
               <img src="../../../img/ic-block.svg" alt="" />
             </i>
-            <span>{data.date}</span>
+            <span>{momentFunc(data.date)}</span>
           </div>
           <div className="view --flex-icon">
             <i>
@@ -33,7 +33,7 @@ function ContentSearchItem({ data }) {
           <a href="">
             <h3>{data.title}</h3>
           </a>
-          <p className="params">{data.params}</p>
+          <p className="params">{data.description}</p>
         </div>
       </div>
     </div>

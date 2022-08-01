@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 GridItem.propTypes = {
   data: PropTypes.object,
@@ -14,10 +13,6 @@ GridItem.defaultProps = {
 };
 
 function GridItem({ data, momentFunc }) {
-  // const router = useRouter();
-  // console.log("router ne`:", router);
-  // console.log("name", data?.slugString);
-  // router.push(`/bai-viet/${data.title}`);
   return (
     <div className="item__posts">
       <Link href={`/bai-viet/${data?.slugString}`}>

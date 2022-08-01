@@ -13,7 +13,7 @@ function DocumentPage(props) {
   return (
     <>
       <Header />
-      <Search />
+      {/* <Search /> */}
       <Features />
       <VideoSupport />
       <Faq />

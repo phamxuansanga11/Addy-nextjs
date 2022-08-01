@@ -13,7 +13,7 @@ SideBarCategory.defaultProps = {
 };
 
 function SideBarCategory({ category, handleClickCategoryList }) {
-  const [idCategory, setIdCategory] = useState("62e0dd8fcce02227343cf3eb");
+  const [idCategory, setIdCategory] = useState("62e7532f20ce712e7b431c84");
 
   return (
     <>

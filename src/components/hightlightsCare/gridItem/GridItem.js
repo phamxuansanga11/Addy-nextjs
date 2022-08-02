@@ -17,11 +17,11 @@ function GridItem({ data, momentFunc }) {
     <div className="item__posts">
       <Link href={`/bai-viet/${data?.slugString}`}>
         <a>
-          <img src={data.urlImage} alt="anh bai viet" />
+          <img src={data?.urlImage} alt="anh bai viet" />
         </a>
       </Link>
       <div className="item__text">
-        <h4>{data.title}</h4>
+        <h4>{data?.title}</h4>
         <div className="hagtag --hagtag">
           <i>
             <img src="../../../img/ic-tag.svg" alt="" />
@@ -39,7 +39,7 @@ function GridItem({ data, momentFunc }) {
             <i>
               <img src="../../../img/ic-eye.svg" alt="" />
             </i>
-            <span className="day">{`${data.view} lượt xem`}</span>
+            <span className="day">{`${data?.countViews} lượt xem`}</span>
           </div>
         </div>
       </div>

@@ -85,7 +85,12 @@ function PostPage(props) {
     if (active - 1 > 1) {
       setActive(active - 1);
       setPageSearch((prev) => prev - 1);
-    } else {
+    }
+    // else if (active - 1 <= 1) {
+    //   setActive(1);
+    //   setPageSearch(1);
+    // }
+    else {
       setActive(1);
       setPageSearch(1);
     }
@@ -144,7 +149,7 @@ function PostPage(props) {
   const fetchPostByCategory = async () => {
     try {
       const resCategory = await categoryApi.getPostsCategory(
-        idCategoryList || "62e7532f20ce712e7b431c84",
+        idCategoryList || "62e8cad696de4361757a6afd",
         {
           pageIndex: `${page}`,
           pageSize: `${pageSize}`,
@@ -184,9 +189,9 @@ function PostPage(props) {
     fetchCategory();
   }, [page]);
 
-  // useEffect(() => {
-  //   fetchPostByCategory();
-  // }, [page, idCategoryList]);
+  useEffect(() => {
+    fetchPostByCategory();
+  }, [page, idCategoryList]);
 
   useEffect(() => {
     if (isSearchText) {
@@ -205,7 +210,6 @@ function PostPage(props) {
       setIsSearchText(false);
       setPage(1);
       setActive(1);
-      // return;
     } else {
       setPageSearch(1);
       setActive(1);
@@ -254,6 +258,7 @@ function PostPage(props) {
               handleSetUpCurrentPage={handleSetUpCurrentPage}
               handleSetDownCurrentPageSearch={handleSetDownCurrentPageSearch}
               handleSetUpCurrentPageSearch={handleSetUpCurrentPageSearch}
+              isSearchText={isSearchText}
             />
           </div>
         </section>
@@ -284,6 +289,7 @@ function PostPage(props) {
                       handleSetUpCurrentPage={handleSetUpCurrentPage}
                       handleSetDownCurrentPageSearch={() => null}
                       handleSetUpCurrentPageSearch={() => null}
+                      isSearchText={""}
                     />
                   </div>
                   <SideBarRight

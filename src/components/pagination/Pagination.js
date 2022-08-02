@@ -29,6 +29,7 @@ function Pagination({
   handleSetUpCurrentPage,
   handleSetDownCurrentPageSearch,
   handleSetUpCurrentPageSearch,
+  isSearchText,
 }) {
   const paginateI = (i) => {
     paginate(i);
@@ -42,13 +43,23 @@ function Pagination({
   }
 
   const handleSetDownCurrentPageChildren = () => {
-    handleSetDownCurrentPage();
-    handleSetDownCurrentPageSearch();
+    if (!isSearchText) {
+      handleSetDownCurrentPage();
+      console.log("bam zo nút giảm nomal");
+    } else {
+      handleSetDownCurrentPageSearch();
+      console.log("bam zo nút giảm Search");
+    }
   };
 
   const handleSetUpCurrentPageChildren = () => {
-    handleSetUpCurrentPage();
-    handleSetUpCurrentPageSearch();
+    if (!isSearchText) {
+      handleSetUpCurrentPage();
+      console.log("bam zo nút tăng nomal");
+    } else {
+      handleSetUpCurrentPageSearch();
+      console.log("bam zo nút tăng Search");
+    }
   };
 
   return (

@@ -73,3 +73,13 @@
     object-fit: cover;
   }
 }
+
+@media screen and(max-width: 768px) {
+  .item__posts .item__text .day__time {
+    flex-direction: column;
+    .time {
+      margin-top: 6px;
+      margin-left: 0;
+    }
+  }
+}

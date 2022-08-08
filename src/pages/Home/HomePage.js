@@ -10,8 +10,6 @@ import Faq from "../../components/faq/Faq";
 import Contact from "../../components/contact/Contact";
 import Footer from "../../components/footer/Footer";
 
-HomePage.propTypes = {};
-
 function HomePage(props) {
   // truyền hàm rỗng để HomePage không báo lỗi.
   const funcEmpty = () => {};

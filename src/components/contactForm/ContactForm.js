@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
-import Alert from "@mui/material/Alert";
+import submitFormApi from "../../../pages/api/submitFormApi";
+import AlertSuccess from "../alert/alertSuccess/AlertSuccess";
+import AlertError from "../alert/alertError/AlertError";
+import classNames from "classnames";
 
 import { useRouter } from "next/router";
 
@@ -18,10 +21,14 @@ function ContactForm({ handleScrollContactForm }) {
 
   const [varUp, setVarUp] = useState(1);
 
+  const [isDisable, setIsDisable] = useState(false);
+
+  const [isShowAlertSuccess, setIsShowAlertSuccess] = useState(false);
+  const [isShowAlertError, setIsShowAlertError] = useState(false);
+
   useEffect(() => {
     if (router.pathname === "/lien-he") {
       setVarUp((prev) => prev + 1);
-      // console.log("dung trang lien he r");
     }
   }, [router]);
 
@@ -32,8 +39,25 @@ function ContactForm({ handleScrollContactForm }) {
     formState: { errors },
   } = useForm();
 
+  const fetchApiSubmit = async (data) => {
+    try {
+      setIsDisable(true);
+      const res = await submitFormApi.submit(data);
+      console.log("res form data:", res);
+      setIsShowAlertSuccess(true);
+      handleShowAlert(setIsShowAlertSuccess);
+      setIsDisable(false);
+    } catch (error) {
+      setIsShowAlertError(true);
+      handleShowAlert(setIsShowAlertError);
+      setIsDisable(false);
+      console.log("error", error);
+    }
+  };
+
   const onSubmit = (data) => {
-    return console.log(data);
+    fetchApiSubmit(data);
+    console.log(data);
   };
   const handleStyle = (name) =>
     errors[name] ? { border: "1px solid red" } : null;
@@ -51,9 +75,19 @@ function ContactForm({ handleScrollContactForm }) {
   const contactRef = useRef();
 
   useEffect(() => {
-    // console.log("contactRef:", contactRef.current);
     handleScrollContactForm(contactRef.current);
   }, [varUp]);
+
+  //clear and setTimeOut show Alert
+  const setTimeOutRef = useRef(null);
+  const handleShowAlert = (setState) => {
+    if (setTimeOutRef.current) {
+      clearTimeout(setTimeOutRef.current);
+    }
+    setTimeOutRef.current = setTimeout(() => {
+      setState(false);
+    }, 2500);
+  };
 
   return (
     <section
@@ -99,10 +133,10 @@ function ContactForm({ handleScrollContactForm }) {
                         value: 25,
                         message: "Họ tên tối đa 14 kí tự.",
                       },
-                      pattern: {
-                        value: PATTERN.VARIABLE_NAME,
-                        message: "Vui lòng nhập chữ.",
-                      },
+                      // pattern: {
+                      //   value: PATTERN.VARIABLE_NAME,
+                      //   message: "Vui lòng nhập chữ.",
+                      // },
                     })}
                     style={handleStyle("fullName")}
                   />
@@ -135,16 +169,19 @@ function ContactForm({ handleScrollContactForm }) {
                   <input
                     type="text"
                     placeholder="Nhập email của bạn..."
-                    {...register("Email", {
+                    {...register("email", {
                       required: { value: true, message: "FAIL" },
-                      pattern: { value: PATTERN.EMAIL, message: "Wrong Email" },
+                      pattern: {
+                        value: PATTERN.EMAIL,
+                        message: "Wrong Email",
+                      },
                     })}
-                    style={handleStyle("Email")}
+                    style={handleStyle("email")}
                   />
-                  {errors.Email?.message === "FAIL" && (
+                  {errors.email?.message === "FAIL" && (
                     <small className="text-danger">Vui lòng nhập Email.</small>
                   )}
-                  {errors.Email?.message === "Wrong Email" && (
+                  {errors.email?.message === "Wrong Email" && (
                     <small className="text-danger">
                       Email không đúng định dạng.
                     </small>
@@ -167,15 +204,21 @@ function ContactForm({ handleScrollContactForm }) {
                     </small>
                   )}
                 </div>
-                <input className="btn__submit" type="submit" value="Đăng kí" />
+                <input
+                  className={classNames({
+                    btn__submit: true,
+                    disable__btn: isDisable,
+                  })}
+                  type="submit"
+                  value="Đăng kí"
+                />
               </form>
             </div>
           </div>
         </div>
       </div>
-      <Alert className="position-absolute " severity="error">
-        This is an error alert — check it out!
-      </Alert>
+      {isShowAlertSuccess && <AlertSuccess />}
+      {isShowAlertError && <AlertError />}
     </section>
   );
 }

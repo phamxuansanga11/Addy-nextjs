@@ -39,6 +39,9 @@
             box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.15);
             background-color: #fff;
           }
+          p {
+            text-align: center;
+          }
         }
       }
     }
@@ -52,6 +55,9 @@
 }
 
 @media screen and(max-width: 447px) {
+  .section__features {
+    margin-top: 50px;
+  }
   .features__content-item {
     display: flex;
     justify-content: center;
@@ -69,6 +75,7 @@
     }
   }
   .section__features .container .features .features__title h2 {
-    font-size: 28px;
+    font-size: 25px;
+    margin-bottom: 15px;
   }
 }

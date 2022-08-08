@@ -12,7 +12,6 @@ import GridItem from "../../components/hightlightsCare/gridItem/GridItem";
 import ContentSearchItem from "../../components/contentSearch/contentSearchItem/ContentSearchItem";
 import Link from "next/link";
 import moment from "moment";
-import "moment-timezone";
 
 function PostPage(props) {
   const [newPosts, setNewPosts] = useState(null);
@@ -172,13 +171,10 @@ function PostPage(props) {
       });
 
       setPostSearchText(resPostBySearchText?.data?.payload?.search);
-      // setTotalPageSearch(resPostBySearchText?.data?.payload?.totalPages);
       setTotalElements(resPostBySearchText?.data?.payload?.totalElements);
-      // setTotalPage(resPostBySearchText?.data?.payload?.totalPages);
       console.log(resPostBySearchText);
       setTotalPageSearch(resPostBySearchText?.data?.payload?.totalPages);
       setIsSearchText(true);
-      // console.log(resPostBySearchText?.data?.payload?.search);
     } catch (error) {
       console.log("API fetchPostBySearchText gọi thất bại", error);
     }
@@ -201,6 +197,7 @@ function PostPage(props) {
       setPageSize(3);
     }
   }, [pageSearch, dataSearch]);
+
   const momentFunc = (dateToFormat) => {
     return moment(dateToFormat).format("DD/MM/YYYY");
   };

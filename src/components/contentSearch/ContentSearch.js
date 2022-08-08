@@ -2,14 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import ContentSearchItem from "./contentSearchItem/ContentSearchItem";
 import Pagination from "../pagination/Pagination";
+import moment from "moment";
 
 ContentSearch.propTypes = {};
 
-{
-  /* <img src="../../../img/logo.png" alt="len" /> */
-}
-
 function ContentSearch(props) {
+  const momentFunc = (dateToFormat) => {
+    return moment(dateToFormat).format("DD/MM/YYYY");
+  };
+
   const objData = [
     {
       id: 1,
@@ -84,7 +85,11 @@ function ContentSearch(props) {
         <div className="result__content">
           <div className="result__content-grid">
             {objData.map((data, idx) => (
-              <ContentSearchItem key={idx} data={data} />
+              <ContentSearchItem
+                key={idx}
+                data={data}
+                momentFunc={momentFunc}
+              />
             ))}
           </div>
         </div>

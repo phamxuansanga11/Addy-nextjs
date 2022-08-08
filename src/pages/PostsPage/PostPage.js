@@ -10,7 +10,7 @@ import Pagination from "../../components/pagination/Pagination";
 import SideBarRight from "../../components/hightlightsCare/sideBarRight/SideBarRight";
 import GridItem from "../../components/hightlightsCare/gridItem/GridItem";
 import ContentSearchItem from "../../components/contentSearch/contentSearchItem/ContentSearchItem";
-
+import Link from "next/link";
 import moment from "moment";
 import "moment-timezone";
 
@@ -234,9 +234,9 @@ function PostPage(props) {
               <p>
                 Tìm thấy <span>{totalElements}</span> kết quả tìm kiếm:
               </p>
-              <a className="btn__backToPosts" href="/bai-viet">
-                {`< Trở về bài viết`}
-              </a>
+              <Link href="/bai-viet">
+                <a className="btn__backToPosts">{`< Trở về bài viết`}</a>
+              </Link>
             </div>
             <div className="result__content">
               <div className="result__content-grid">

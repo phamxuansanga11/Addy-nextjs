@@ -15,13 +15,15 @@ GridItem.defaultProps = {
 function GridItem({ data, momentFunc }) {
   return (
     <div className="item__posts">
-      <Link href={`/bai-viet/${data?.slugString}`}>
+      <Link href={`/bai-viet-chi-tiet/${data?.slugString}`}>
         <a>
           <img src={data?.urlImage} alt="anh bai viet" />
         </a>
       </Link>
       <div className="item__text">
-        <h4>{data?.title}</h4>
+        <Link href={`/bai-viet-chi-tiet/${data?.slugString}`}>
+          <a className="title__post">{data?.title}</a>
+        </Link>
         <div className="hagtag --hagtag">
           <i>
             <img src="../../../img/ic-tag.svg" alt="" />

@@ -10,7 +10,8 @@ import Pagination from "../../components/pagination/Pagination";
 import SideBarRight from "../../components/hightlightsCare/sideBarRight/SideBarRight";
 import GridItem from "../../components/hightlightsCare/gridItem/GridItem";
 import ContentSearchItem from "../../components/contentSearch/contentSearchItem/ContentSearchItem";
-import Link from "next/link";
+import { useRouter } from "next/router";
+// import Link from "next/link";
 import moment from "moment";
 
 function PostPage(props) {
@@ -20,13 +21,13 @@ function PostPage(props) {
 
   //Pagination
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(3);
+  const [pageSize, setPageSize] = useState(4);
   const [totalPages, setTotalPage] = useState();
   const [active, setActive] = useState(1);
 
   //Pagination Search
   const [pageSearch, setPageSearch] = useState(1);
-  const [pageSizeSearch, setPageSizeSearch] = useState(3);
+  const [pageSizeSearch, setPageSizeSearch] = useState(6);
   const [totalPagesSearch, setTotalPageSearch] = useState();
 
   //bai viet noi bat
@@ -53,9 +54,12 @@ function PostPage(props) {
       setPage(1);
       setActive(1);
       setNameCategory(title);
-      console.log("name", title);
     }
   };
+
+  //router
+  const router = useRouter();
+  const idCategoryFirstLoad = router.query.id;
 
   const handleSetDownCurrentPage = useCallback(() => {
     console.log("page - 1");
@@ -84,12 +88,7 @@ function PostPage(props) {
     if (active - 1 > 1) {
       setActive(active - 1);
       setPageSearch((prev) => prev - 1);
-    }
-    // else if (active - 1 <= 1) {
-    //   setActive(1);
-    //   setPageSearch(1);
-    // }
-    else {
+    } else {
       setActive(1);
       setPageSearch(1);
     }
@@ -116,7 +115,6 @@ function PostPage(props) {
 
   const paginatePageSearch = (pageNumber) => {
     setPageSearch(pageNumber);
-    // console.log("alo 123");
   };
 
   const fetchNewPosts = async (page, pageSize) => {
@@ -148,14 +146,14 @@ function PostPage(props) {
   const fetchPostByCategory = async () => {
     try {
       const resCategory = await categoryApi.getPostsCategory(
-        idCategoryList || "62e8cad696de4361757a6afd",
+        idCategoryList || "62f0ce39d497346d598d8b92",
         {
           pageIndex: `${page}`,
           pageSize: `${pageSize}`,
         }
       );
       setRemakeablePost(resCategory?.data?.data);
-      console.log(resCategory?.data?.data);
+      setNameCategory(resCategory?.data?.data[0]?.categories?.name);
       setTotalPage(resCategory?.data?.totalPages);
     } catch (error) {
       console.log("API fetchPostByCategory that bai", error);
@@ -186,7 +184,7 @@ function PostPage(props) {
   }, [page]);
 
   useEffect(() => {
-    fetchPostByCategory();
+    fetchPostByCategory(idCategoryList);
   }, [page, idCategoryList]);
 
   useEffect(() => {
@@ -194,9 +192,15 @@ function PostPage(props) {
       fetchPostBySearchText(dataSearch);
     } else {
       setPage(1);
-      setPageSize(3);
+      setPageSize(pageSize);
     }
   }, [pageSearch, dataSearch]);
+
+  useEffect(() => {
+    if (idCategoryFirstLoad) {
+      setIdCategoryList(idCategoryFirstLoad);
+    }
+  }, [idCategoryFirstLoad]);
 
   const momentFunc = (dateToFormat) => {
     return moment(dateToFormat).format("DD/MM/YYYY");
@@ -215,15 +219,19 @@ function PostPage(props) {
     }
   };
 
-  //log so lan` re-render
-  // const rederRef = useRef(1);
-  // console.log("re-render....", rederRef.current++);
+  // const handleClickBack = () => {
+  //   console.log("alo");
+  //   setDataSearch("");
+  // };
 
   return (
     <>
       {loading && <Loading />}
       <Header />
-      <Search handleOnSubmit={handleOnSubmit} />
+      <Search
+        handleOnSubmit={handleOnSubmit}
+        // handleClickBack={handleClickBack}
+      />
       {isSearchText ? (
         <section className="section__content-search">
           <div className="container">
@@ -231,9 +239,10 @@ function PostPage(props) {
               <p>
                 Tìm thấy <span>{totalElements}</span> kết quả tìm kiếm:
               </p>
-              <Link href="/bai-viet">
-                <a className="btn__backToPosts">{`< Trở về bài viết`}</a>
-              </Link>
+              <a className="btn__backToPosts">{`< Trở về bài viết`}</a>
+              {/* <Link href="/bai-viet">
+              </Link> */}
+              {/* <button onClick={handleClickBack}>back to page</button> */}
             </div>
             <div className="result__content">
               <div className="result__content-grid">
@@ -267,7 +276,7 @@ function PostPage(props) {
               <div className="hightlights__care">
                 <div className="wrapper__grid">
                   <div className="wrapper__grid-left">
-                    <h2>{nameCategory ? nameCategory : "Danh mục 1"}</h2>
+                    <h2>{nameCategory ? nameCategory : ""}</h2>
                     <div className="hightlights__care-content">
                       {remakeablePost?.map((data) => (
                         <GridItem
@@ -292,6 +301,7 @@ function PostPage(props) {
                   <SideBarRight
                     category={category}
                     handleClickCategoryList={handleClickCategoryList}
+                    idPostByCategoryDetail={idCategoryFirstLoad}
                   />
                 </div>
               </div>
@@ -299,7 +309,6 @@ function PostPage(props) {
           </section>
         </>
       )}
-
       <Footer />
     </>
   );

@@ -13,7 +13,11 @@ SideBarRight.defaultProps = {
   handleClickCategoryList: null,
 };
 
-function SideBarRight({ category, handleClickCategoryList }) {
+function SideBarRight({
+  category,
+  handleClickCategoryList,
+  idPostByCategoryDetail,
+}) {
   const Data = [
     {
       image: "../../../img/new-6.jpg",
@@ -42,6 +46,7 @@ function SideBarRight({ category, handleClickCategoryList }) {
         <SideBarCategory
           category={category}
           handleClickCategoryList={handleClickCategoryList}
+          idPostByCategoryDetail={idPostByCategoryDetail}
         />
         <h2 className="title">Bạn có thể quan tâm</h2>
         <PostCareItem data={Data} />

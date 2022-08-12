@@ -21,7 +21,7 @@ function Header() {
 
   const router = useRouter();
   const location = router.pathname;
-  const locationDetail = router.asPath.slice(10);
+  const locationDetail = router.asPath.slice(19);
   const { slugString } = router.query;
 
   const handleClickLienHe = async () => {
@@ -66,7 +66,7 @@ function Header() {
                 </Link>
               </li>
               <li className="nav__menu-option">
-                <Link href="/bai-viet">
+                <Link href={`/bai-viet`} scroll={false}>
                   <a
                     className={classNames({
                       "": true,

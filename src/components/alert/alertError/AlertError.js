@@ -2,7 +2,7 @@ import React from "react";
 
 function AlertError(props) {
   return (
-    <section className="section__alert">
+    <section className="section__alert --error">
       <p className="notification">Gửi thất bại!</p>
       <i className="icon">
         <img src="../../../img/icon-error.png" alt="len" />

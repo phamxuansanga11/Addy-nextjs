@@ -69,6 +69,7 @@ function Search({ handleOnSubmit }) {
               onChange={handleOnChange}
               onSubmit={() => search()}
             />
+            {/* <div className="close__input">x</div> */}
           </div>
           <p className="search__contact">
             Liên hệ với Addy CMS để được hỗ trợ miễn phí{" "}

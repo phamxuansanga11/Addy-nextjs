@@ -34,7 +34,7 @@ function NewPost({ newPosts, momentFunc }) {
             <div className="grid__left --grid">
               <Link
                 key={oneItem?._id}
-                href={`/bai-viet/${oneItem?.slugString}`}
+                href={`/bai-viet-chi-tiet/${oneItem?.slugString}`}
               >
                 <a className="grid__item">
                   <img src={oneItem?.urlImage} alt="" />
@@ -56,7 +56,10 @@ function NewPost({ newPosts, momentFunc }) {
             </div>
             <div className="grid__right --grid">
               {threeItem?.map((data) => (
-                <Link key={data._id} href={`/bai-viet/${data?.slugString}`}>
+                <Link
+                  key={data._id}
+                  href={`/bai-viet-chi-tiet/${data?.slugString}`}
+                >
                   <a className="grid__item">
                     <img src={data?.urlImage} alt="" />
                     <div className="grid__item-text">

@@ -60,6 +60,11 @@ i {
 .main__search-detail-page {
   background-color: #f9f9f9;
 }
+.section__search-detail-post {
+  img {
+    width: 100% !important;
+  }
+}
 
 @media screen and(min-width: 1200px) {
   .container {

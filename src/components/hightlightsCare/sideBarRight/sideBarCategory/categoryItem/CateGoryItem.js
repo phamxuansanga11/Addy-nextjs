@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 CateGoryItem.propTypes = {
   title: PropTypes.string,
@@ -17,15 +19,17 @@ function CateGoryItem({ title, handleClickCategoryList, id, isActive }) {
     handleClickCategoryList(id, title);
   };
   return (
-    <a
-      className={classNames({
-        category__detail: true,
-        active: isActive,
-      })}
-      onClick={() => handleClickCategory()}
-    >
-      {title}
-    </a>
+    <Link href={`/bai-viet/?id=${id}`} scroll={false}>
+      <a
+        className={classNames({
+          category__detail: true,
+          active: isActive,
+        })}
+        onClick={() => handleClickCategory()}
+      >
+        {title}
+      </a>
+    </Link>
   );
 }
 

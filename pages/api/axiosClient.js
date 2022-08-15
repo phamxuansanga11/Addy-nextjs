@@ -8,7 +8,7 @@ const axiosClient = axios.create({
 });
 
 //Interceptor
-// Add a request interceptor
+// Add a request interceptorr
 axios.interceptors.request.use(
   function (config) {
     // Do something before request is sent

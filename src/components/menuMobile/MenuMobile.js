@@ -11,6 +11,8 @@ function MenuMobile({ iconRef, handleCloseMenu, handleClickLienHe }) {
   const location = router.pathname;
   const locationDetail = router.asPath;
   const newLocation = locationDetail.slice(1, 9);
+  const { slugString } = router.query;
+  const newSlugString = slugString?.slice(0, 8);
 
   const { id } = router.query;
 
@@ -59,7 +61,8 @@ function MenuMobile({ iconRef, handleCloseMenu, handleClickLienHe }) {
               "nav__menu-option": true,
               active:
                 location === "/bai-viet" ||
-                locationDetail === `/${newLocation}/${id}`,
+                locationDetail === `/${newLocation}/${id}` ||
+                newLocation === newSlugString,
             })}
           >
             <Link href="/bai-viet">

@@ -13,15 +13,10 @@ const postsApi = {
     const url = "/post/search";
     return axiosClient.post(url, { payload: payload });
   },
-
-  // update(data) {
-  //   const url = `/contect-covid${data.id}`;
-  //   return axiosClient.patch(url, data);
-  // },
-  // remove(id) {
-  //   const url = `/contect-covid${id}`;
-  //   return axiosClient.delete(url);
-  // },
+  getPostByView() {
+    const url = "/post/get-post-by-view";
+    return axiosClient.get(url);
+  },
 };
 
 export default postsApi;

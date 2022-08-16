@@ -14,7 +14,7 @@ function AddyCrm({ classNameTitle, title, h3, p }) {
         <div className="container --container__homepage">
           <div className="wrapper__grid">
             <div className="wrapper__grid-left">
-              <h2 className={classNameTitle}>{title}</h2>
+              <h4 className={classNameTitle}>{title}</h4>
               <h3>{h3}</h3>
               <p>{p}</p>
             </div>

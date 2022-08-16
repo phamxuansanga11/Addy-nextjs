@@ -6,6 +6,7 @@ import SiderBarRight from "../../components/hightlightsCare/sideBarRight/SideBar
 import postDetailApi from "../../../pages/api/postDetailApi";
 import Loading from "../../components/loading/Loading";
 import renderHTML from "react-render-html";
+import postsApi from "../../../pages/api/postsApi";
 
 import { useRouter } from "next/router";
 
@@ -13,12 +14,13 @@ function SearchDetailPost(props) {
   const router = useRouter();
   const { slugString } = router.query;
 
-  // console.log(slugString);
-
   //State data từ call API
   const [postDetail, setPostDetail] = useState();
   const [listCategory, setListCategory] = useState();
   const [idPostByCategoryDetail, setIdPostByCategoryDetail] = useState();
+
+  //bai viet view cao
+  const [postByView, setPostByView] = useState();
 
   //State Loading
   const [loading, setLoading] = useState(false);
@@ -55,6 +57,12 @@ function SearchDetailPost(props) {
 
   const handleClickCategoryList = () => {};
 
+  const fetchPostByView = async () => {
+    const resPostByView = await postsApi.getPostByView();
+    setPostByView(resPostByView?.data);
+    console.log(resPostByView?.data);
+  };
+
   //useRef setTimeOutCountView count view
   const clearTimeoutRef = useRef(null);
 
@@ -67,6 +75,7 @@ function SearchDetailPost(props) {
 
   useEffect(() => {
     fetchCategory();
+    fetchPostByView();
   }, []);
 
   useEffect(() => {
@@ -104,6 +113,7 @@ function SearchDetailPost(props) {
                 category={listCategory}
                 handleClickCategoryList={handleClickCategoryList}
                 idPostByCategoryDetail={idPostByCategoryDetail}
+                postByView={postByView}
               />
             </div>
           </div>

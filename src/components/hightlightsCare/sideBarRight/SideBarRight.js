@@ -6,40 +6,23 @@ import SideBarCategory from "./sideBarCategory/SideBarCategory";
 SideBarRight.propTypes = {
   category: PropTypes.array,
   handleClickCategoryList: PropTypes.func,
+  idPostByCategoryDetail: PropTypes.string,
+  postByView: PropTypes.array,
 };
 
 SideBarRight.defaultProps = {
   category: [],
   handleClickCategoryList: null,
+  idPostByCategoryDetail: "",
+  postByView: [],
 };
 
 function SideBarRight({
   category,
   handleClickCategoryList,
   idPostByCategoryDetail,
+  postByView,
 }) {
-  const Data = [
-    {
-      image: "../../../img/new-6.jpg",
-      text: "Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10",
-    },
-    {
-      image: "../../../img/new-7.jpg",
-      text: "Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10 Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10",
-    },
-    {
-      image: "../../../img/new-8.jpg",
-      text: "Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10 Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10",
-    },
-    {
-      image: "../../../img/new-9.jpg",
-      text: "Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10 Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10",
-    },
-    {
-      image: "../../../img/new-10.jpg",
-      text: "Điện thoại Realme Q mới được đồn đoán ra mắt vào ngày 13/10",
-    },
-  ];
   return (
     <>
       <div className="wrapper__grid-right">
@@ -49,7 +32,7 @@ function SideBarRight({
           idPostByCategoryDetail={idPostByCategoryDetail}
         />
         <h2 className="title">Bạn có thể quan tâm</h2>
-        <PostCareItem data={Data} />
+        <PostCareItem data={postByView} />
       </div>
     </>
   );

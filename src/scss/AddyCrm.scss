@@ -14,13 +14,14 @@
         grid-template-columns: 5fr 7fr;
         .wrapper__grid-left {
           margin: auto;
-          > h2 {
+          > h4 {
             margin-bottom: 15px;
             font-size: 50px;
             font-family: bb;
             line-height: normal;
             color: #170a4b;
             text-transform: none;
+            font-weight: bold;
           }
           .fs__title {
             font-size: 34px;
@@ -63,5 +64,15 @@
   }
   .section__homepage {
     margin-top: 60px;
+  }
+}
+@media screen and(max-width: 440px) {
+  .section__homepage
+    .bg__homepage
+    .--container__homepage
+    .wrapper__grid
+    .wrapper__grid-left
+    > h4 {
+    font-size: 35px;
   }
 }

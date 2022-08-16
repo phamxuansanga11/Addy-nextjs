@@ -39,18 +39,16 @@ function PostPage(props) {
 
   //List category
   const [category, setCategory] = useState();
-
   const [nameCategory, setNameCategory] = useState();
-
-  const [idCategoryList, setIdCategoryList] = useState();
-
   const [dataSearch, setDataSearch] = useState("");
+
+  //bai viet view cao
+  const [postByView, setPostByView] = useState();
 
   //func hightlight
   const handleClickCategoryList = (id, title) => {
     if (id) {
       console.log("id ne`: ", id);
-      setIdCategoryList(id);
       setPage(1);
       setActive(1);
       setNameCategory(title);
@@ -60,6 +58,7 @@ function PostPage(props) {
   //router
   const router = useRouter();
   const idCategoryFirstLoad = router.query.id;
+  console.log(idCategoryFirstLoad, "huhu");
 
   const handleSetDownCurrentPage = useCallback(() => {
     console.log("page - 1");
@@ -143,10 +142,10 @@ function PostPage(props) {
     }
   };
 
-  const fetchPostByCategory = async () => {
+  const fetchPostByCategory = async (idCategoryFirstLoad) => {
     try {
       const resCategory = await categoryApi.getPostsCategory(
-        idCategoryList || "62f0ce39d497346d598d8b92",
+        idCategoryFirstLoad,
         {
           pageIndex: `${page}`,
           pageSize: `${pageSize}`,
@@ -178,14 +177,23 @@ function PostPage(props) {
     }
   };
 
+  const fetchPostByView = async () => {
+    const resPostByView = await postsApi.getPostByView();
+    setPostByView(resPostByView?.data);
+  };
+
   useEffect(() => {
     fetchNewPosts(1, 4);
     fetchCategory();
   }, [page]);
 
   useEffect(() => {
-    fetchPostByCategory(idCategoryList);
-  }, [page, idCategoryList]);
+    if (idCategoryFirstLoad) {
+      fetchPostByCategory(idCategoryFirstLoad);
+    } else {
+      fetchPostByCategory("62f0ce39d497346d598d8b92");
+    }
+  }, [page, idCategoryFirstLoad]);
 
   useEffect(() => {
     if (isSearchText) {
@@ -196,11 +204,15 @@ function PostPage(props) {
     }
   }, [pageSearch, dataSearch]);
 
+  // useEffect(() => {
+  //   if (idCategoryFirstLoad) {
+  //     setIdCategoryList(idCategoryFirstLoad);
+  //   }
+  // }, [idCategoryFirstLoad]);
+
   useEffect(() => {
-    if (idCategoryFirstLoad) {
-      setIdCategoryList(idCategoryFirstLoad);
-    }
-  }, [idCategoryFirstLoad]);
+    fetchPostByView();
+  }, []);
 
   const momentFunc = (dateToFormat) => {
     return moment(dateToFormat).format("DD/MM/YYYY");
@@ -219,19 +231,11 @@ function PostPage(props) {
     }
   };
 
-  // const handleClickBack = () => {
-  //   console.log("alo");
-  //   setDataSearch("");
-  // };
-
   return (
     <>
       {loading && <Loading />}
       <Header />
-      <Search
-        handleOnSubmit={handleOnSubmit}
-        // handleClickBack={handleClickBack}
-      />
+      <Search handleOnSubmit={handleOnSubmit} />
       {isSearchText ? (
         <section className="section__content-search">
           <div className="container">
@@ -302,6 +306,7 @@ function PostPage(props) {
                     category={category}
                     handleClickCategoryList={handleClickCategoryList}
                     idPostByCategoryDetail={idCategoryFirstLoad}
+                    postByView={postByView}
                   />
                 </div>
               </div>
